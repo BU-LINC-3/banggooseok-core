@@ -8,7 +8,7 @@
     <mvc:annotation-driven/>
 
     <!-- Default package path -->
-    <context:component-scan base-package="banggooseok"/>
+    <context:component-scan base-package="kr.banggooseok.core"/>
 
     <!-- View Resolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
