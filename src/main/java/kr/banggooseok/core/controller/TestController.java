@@ -1,6 +1,6 @@
 package kr.banggooseok.core.controller;
 
-import kr.banggooseok.core.model.view.TestModel;
+import kr.banggooseok.core.model.TestModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -10,13 +10,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class TestController {
 
     @RequestMapping()
-    public ModelAndView index() {
+    public ModelAndView test() {
         TestModel model = new TestModel();
 
-        model.setTitle("TestTitle");
-        model.setBody("TestBody");
+        model.setTitle("title");
+        model.setBody("body");
 
-        return new ModelAndView("index", "model", model);
+        return new ModelAndView("index","model", model);
     }
 
 }

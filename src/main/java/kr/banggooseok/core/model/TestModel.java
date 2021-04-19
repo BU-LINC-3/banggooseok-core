@@ -1,4 +1,4 @@
-package kr.banggooseok.core.model.view;
+package kr.banggooseok.core.model;
 
 public class TestModel {
 
