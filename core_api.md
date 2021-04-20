@@ -10,8 +10,6 @@
 | :---: | :---: | :--------------: | :------: |
 | page  |  int  | 목록 페이지 번호 |    O     |
 
-</br>
-
 ### 응답
 |    Key    |     Type     |    Description     | Nullable |
 | :-------: | :----------: | :----------------: | :------: |
@@ -32,7 +30,7 @@
 |  address   |     String     |   매물 주소지    |    -     |
 |   image    | Array\<String> | 매물 이미지 목록 |    -     |
 
-</br></br></br>
+</br>
 
 ## 매물 상세 조회
 ### GET /api/room/{room_id}
@@ -43,8 +41,6 @@
 |  Path   | Type  |  Description   | Required |
 | :-----: | :---: | :------------: | :------: |
 | room_id |  int  | 매물 고유 번호 |    O     |
-
-</br>
 
 ### 응답
 |     Key      |      Type      |      Description      | Nullable |
@@ -72,5 +68,5 @@
 |    image     | Array\<String> |   매물 이미지 목록    |    -     |
 |   contact    |     String     |        연락처         |    -     |
 
-</br></br></br>
+</br>
 
