@@ -13,7 +13,7 @@
            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-5.2.14.xsd">
 
     <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
-        <property name="location" value="classpath:../resources/database/config/database.properties"/>
+        <property name="location" value="classpath:database/config/database.properties"/>
         <property name="fileEncoding" value="UTF-8" />
     </bean>
 
