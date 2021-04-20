@@ -73,5 +73,6 @@
 |   address    |     String     |      매물 주소지      |    -     |
 |    image     | Array\<String> |   매물 이미지 목록    |    -     |
 |   contact    |     String     |        연락처         |    -     |
+
 </br></br></br>
 
