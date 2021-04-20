@@ -147,3 +147,6 @@ buildNumber.properties
 .flattened-pom.xml
 
 # End of https://www.toptal.com/developers/gitignore/api/maven,intellij,java,java-web
+.idea/dataSources.xml
+.idea/sqldialects.xml
+src/main/resources/database/config/database.properties
