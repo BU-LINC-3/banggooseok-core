@@ -10,6 +10,7 @@
 | Path  | Type  |   Description    | Required |
 | :---: | :---: | :--------------: | :------: |
 | page  |  int  | 목록 페이지 번호 |    O     |
+
 </br>
 
 ### 응답
@@ -18,6 +19,7 @@
 | page_max  |     int      | 마지막 페이지 번호 |    -     |
 | room_size |     int      |   매물 목록 크기   |    -     |
 |   rooms   | Array\<Room> |     매물 목록      |    -     |
+
 </br>
 
 | Room Field |      Type      |   Description    | Nullable |
@@ -30,6 +32,7 @@
 | const_type |      int       |    건물 구조     |    -     |
 |  address   |     String     |   매물 주소지    |    -     |
 |   image    | Array\<String> | 매물 이미지 목록 |    -     |
+
 </br></br></br>
 
 ## 매물 상세 조회
@@ -42,6 +45,7 @@
 |  Path   | Type  |  Description   | Required |
 | :-----: | :---: | :------------: | :------: |
 | room_id |  int  | 매물 고유 번호 |    O     |
+
 </br>
 
 ### 응답
