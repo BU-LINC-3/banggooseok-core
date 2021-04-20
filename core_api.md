@@ -26,9 +26,10 @@
 | trans_type |      int       |    거래 종류     |    -     |
 |  deposit   |      int       |      보증금      |    O     |
 |    fee     |      int       |       월세       |    O     |
-| const_type |      int       |    건물 구조     |    -     |
+| const_type |      int       |    건물 구조     |    O     |
+|   floor    |      int       |     매물 층      |    O     |
 |  address   |     String     |   매물 주소지    |    -     |
-|   image    | Array\<String> | 매물 이미지 목록 |    -     |
+|   images   | Array\<String> | 매물 이미지 목록 |    -     |
 
 </br>
 
@@ -57,8 +58,8 @@
 |    floor     |      int       |        매물 층        |    O     |
 | const_floor  |      int       |       건물 층수       |    O     |
 |  const_type  |      int       |       건물 구조       |    O     |
-| valid_dimen  |     double     |       전용 면적       |    O     |
-| supply_dimen |     double     |       공급 면적       |    O     |
+| valid_dimen  |     float      |       전용 면적       |    O     |
+| supply_dimen |     float      |       공급 면적       |    O     |
 |  avail_date  |      long      |    입주 가능 일자     |    -     |
 |   options    | Array\<String> |       옵션 목록       |    O     |
 |   elevator   |    boolean     |      엘리베이터       |    O     |
@@ -67,6 +68,7 @@
 |   address    |     String     |      매물 주소지      |    -     |
 |    image     | Array\<String> |   매물 이미지 목록    |    -     |
 |   contact    |     String     |        연락처         |    -     |
+|  timestamp   |      long      |       게시 시간       |    -     |
 
 </br>
 
