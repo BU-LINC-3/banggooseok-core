@@ -13,6 +13,7 @@
     <mvc:annotation-driven/>
 
     <context:component-scan base-package="kr.banggooseok.core.controller"/>
+    <context:component-scan base-package="kr.banggooseok.database.dao"/>
 
     <!--ViewResolver-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
