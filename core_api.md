@@ -1,7 +1,6 @@
 # 방구석 코어 API 문서 (작성 중)
 
 ## 매물 목록 조회
----
 ### GET /api/room/list/{page}
 `(예시) /api/room/list/0`
 </br>
@@ -36,7 +35,6 @@
 </br></br></br>
 
 ## 매물 상세 조회
----
 ### GET /api/room/{room_id}
 `(예시) /api/room/12345`
 </br>
