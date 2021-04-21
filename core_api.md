@@ -3,6 +3,31 @@
 ## 매물 목록 조회
 ### GET /api/room/list/{page}
 `(예시) /api/room/list/0`
+```
+{
+    "rooms": [
+        {
+            "id": 1,
+            "title": "매물 테스트용 제목 ~!@#$%^&*()_+1234asdf",
+            "trans_type": 1,
+            "deposit": 1000000,
+            "fee": 1000000,
+            "const_type": 1,
+            "floor": 3,
+            "address": "서울특별시 강남구",
+            "images": [
+                "/aadsdafaf",
+                "/aadsdafaf",
+                "/aadsdafaf",
+                "/aadsdafaf",
+                "/aadsdafaf"
+            ]
+        }
+    ],
+    "rooms_length": 3,
+    "page_max": 1
+}
+```
 </br>
 
 ### 요청
