@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="room">
     <!-- Query Room List -->
-    <select id="selectRoomList" parameterType="Integer" resultType="RoomVO">
+    <select id="selectRoomList" parameterType="Integer" resultType="RoomsSimpleVO">
         SELECT id, title, trans_type, deposit, fee, const_type, floor, address, images
         FROM rooms
         LIMIT #{from}, #{count}
