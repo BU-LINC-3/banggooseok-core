@@ -21,7 +21,7 @@
 |  const_type  |   int   |       건물 구조       |    O     |
 | valid_dimen  |  float  |       전용 면적       |    O     |
 | supply_dimen |  float  |       공급 면적       |    O     |
-|  avail_date  |  long   |    입주 가능 일자     |    -     |
+|  avail_date  |  long   |    입주 가능 일자     |    O     |
 |   options    | String  |       옵션 목록       |    O     |
 |   elevator   | boolean |      엘리베이터       |    O     |
 |   parking    |   int   |    가용 주차 공간     |    O     |

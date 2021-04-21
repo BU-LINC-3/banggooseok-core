@@ -85,7 +85,7 @@
 |  const_type  |      int       |      건물 구조</br>[1부터 시작하며 방 개수]       |    O     |
 | valid_dimen  |     float      |            전용 면적</br>[미터법 사용]            |    O     |
 | supply_dimen |     float      |            공급 면적</br>[미터법 사용]            |    O     |
-|  avail_date  |      long      |        입주 가능 일자</br>[Unix Timestamp]        |    -     |
+|  avail_date  |      long      |        입주 가능 일자</br>[Unix Timestamp]        |    O     |
 |   options    | Array\<String> |                     옵션 목록                     |    O     |
 |   elevator   |    boolean     |                    엘리베이터                     |    O     |
 |   parking    |      int       |     가용 주차 공간</br>[수용 가능한 차량 수]      |    O     |
@@ -210,3 +210,6 @@
 | page  |  int  | page of list |    -     |
 
 </br>
+
+
+채팅창
