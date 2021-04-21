@@ -11,11 +11,11 @@
 | page  |  int  | 목록 페이지 번호</br>[0~N] |    O     |
 
 ### 응답
-|    Key    |     Type     |    Description     | Nullable |
-| :-------: | :----------: | :----------------: | :------: |
-| page_max  |     int      | 마지막 페이지 번호 |    -     |
-| room_size |     int      |   매물 목록 크기   |    -     |
-|   rooms   | Array\<Room> |     매물 목록      |    -     |
+|     Key      |     Type     |    Description     | Nullable |
+| :----------: | :----------: | :----------------: | :------: |
+|   page_max   |     int      | 마지막 페이지 번호 |    -     |
+| rooms_length |     int      |   매물 목록 크기   |    -     |
+|    rooms     | Array\<Room> |     매물 목록      |    -     |
 
 </br>
 
@@ -72,3 +72,116 @@
 
 </br>
 
+## 매물 등록
+### POST /api/room/submit
+`(예시) /api/room/submit?token=a9ace025c90c0da2161075da6ddd3492a2fca776&user_id=12345345463462`
+</br>
+
+### 요청
+|  Query  |  Type  |       Description       | Required |
+| :-----: | :----: | :---------------------: | :------: |
+|  token  | String |     카카오 API 토근     |    O     |
+| user_id |  long  | 카카오 사용자 고유 번호 |    O     |
+
+|  POST   |  Type  |       Description       | Required |
+| :-----: | :----: | :---------------------: | :------: |
+|  token  | String |     카카오 API 토근     |    O     |
+| user_id |  long  | 카카오 사용자 고유 번호 |    O     |
+
+### 응답
+|  Key  | Type  | Description  | Required |
+| :---: | :---: | :----------: | :------: |
+| page  |  int  | page of list |    -     |
+
+</br>
+
+## 관심 매물 등록
+### GET /api/user/{user_id}/favorite/add
+`(예시) /api/user/12332452435/favorit/add?token=a9ace025c90c0da2161075da6ddd3492a2fca776&room_id=123456`
+</br>
+
+### 요청
+|  Path   | Type  |       Description       | Required |
+| :-----: | :---: | :---------------------: | :------: |
+| user_id | long  | 카카오 사용자 고유 번호 |    O     |
+
+|  Query  |  Type  |   Description   | Required |
+| :-----: | :----: | :-------------: | :------: |
+|  token  | String | 카카오 API 토큰 |    O     |
+| room_id |  int   | 매물 고유 번호  |    O     |
+
+### 응답
+|  Key  | Type  | Description  | Required |
+| :---: | :---: | :----------: | :------: |
+| page  |  int  | page of list |    -     |
+
+</br>
+
+## 관심 매물 조회
+### GET /api/user/{user_id}/favorite/list/{page}
+`(예시) /api/user/123412342434/favorite/list/0`
+</br>
+
+### 요청
+|  Path   | Type  |       Description       | Required |
+| :-----: | :---: | :---------------------: | :------: |
+| user_id | long  | 카카오 사용자 고유 번호 |    O     |
+|  page   |  int  |    목록 페이지 번호     |    O     |
+
+### 응답
+|  Key  | Type  | Description  | Required |
+| :---: | :---: | :----------: | :------: |
+| page  |  int  | page of list |    -     |
+
+</br>
+
+## 평판 등록/갱신
+### GET /api/
+`(예시) /api/`
+</br>
+
+### 요청
+|  Key  | Type  | Description  | Required |
+| :---: | :---: | :----------: | :------: |
+| page  |  int  | page of list |    -     |
+
+### 응답
+|  Key  | Type  | Description  | Required |
+| :---: | :---: | :----------: | :------: |
+| page  |  int  | page of list |    -     |
+
+</br>
+
+## 계정 정보 조회
+### GET /api/user/{user_id}
+`(예시) /api/user/1234234155`
+</br>
+
+### 요청
+|  Path   | Type  |       Description       | Required |
+| :-----: | :---: | :---------------------: | :------: |
+| user_id | long  | 카카오 사용자 고유 번호 |    O     |
+
+### 응답
+|  Key  | Type  | Description  | Required |
+| :---: | :---: | :----------: | :------: |
+| page  |  int  | page of list |    -     |
+
+</br>
+
+## 거래 내역 조회
+### GET /api/user/{user_id}/transaction/list
+`(예시) /api/user/1234532455/transaction/list`
+</br>
+
+### 요청
+|  Path   | Type  |       Description       | Required |
+| :-----: | :---: | :---------------------: | :------: |
+| user_id | long  | 카카오 사용자 고유 번호 |    O     |
+
+### 응답
+|  Key  | Type  | Description  | Required |
+| :---: | :---: | :----------: | :------: |
+| page  |  int  | page of list |    -     |
+
+</br>
