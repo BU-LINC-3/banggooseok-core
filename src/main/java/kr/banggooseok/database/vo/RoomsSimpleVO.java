@@ -42,6 +42,9 @@ public class RoomsSimpleVO {
     @SerializedName("trans_done")
     private boolean trans_done;
 
+    @SerializedName("fav_count")
+    private int fav_count;
+
     public int getId() {
         return id;
     }
@@ -136,4 +139,13 @@ public class RoomsSimpleVO {
     public void setTrans_done(boolean trans_done) {
         this.trans_done = trans_done;
     }
+
+    public int getFav_count() {
+        return fav_count;
+    }
+
+    public void setFav_count(int fav_count) {
+        this.fav_count = fav_count;
+    }
+
 }

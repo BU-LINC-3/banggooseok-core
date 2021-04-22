@@ -3,7 +3,14 @@
 <mapper namespace="rooms">
     <!-- Query Room List -->
     <select id="selectRoomList" parameterType="Integer" resultType="RoomsSimpleVO">
-        SELECT id, title, trans_type, deposit, fee, const_type, floor, address, images, timestamp, trans_done
+        SELECT id, title, trans_type, deposit, fee, const_type, floor, address, images, timestamp, trans_done,
+               (
+                   SELECT COUNT(room_id)
+                   FROM favorites
+                   <where>
+                       room_id = id
+                   </where>
+               ) AS fav_count
         FROM rooms
         LIMIT #{from}, #{count}
     </select>
@@ -16,7 +23,14 @@
 
     <!-- Query Room List -->
     <select id="selectRoom" parameterType="Integer" resultType="RoomsVO">
-        SELECT *
+        SELECT *,
+                (
+                    SELECT COUNT(room_id)
+                    FROM favorites
+                    <where>
+                        room_id = id
+                    </where>
+                ) AS fav_count
         FROM rooms
         <where>
             id = #{room_id}
