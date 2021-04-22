@@ -330,24 +330,7 @@
 
 </br>
 
-## 평판 등록/갱신
-### GET /api/
-`(예시) /api/`
-</br>
-
-### 요청
-|  Key  | Type  | Description  | Required |
-| :---: | :---: | :----------: | :------: |
-| page  |  int  | page of list |    -     |
-
-### 응답
-|  Key  | Type  | Description  | Required |
-| :---: | :---: | :----------: | :------: |
-| page  |  int  | page of list |    -     |
-
-</br>
-
-## 계정 정보 조회
+## 사용자 정보 조회
 ### GET /api/user/{user_id}
 `(예시) /api/user/1234234155`
 </br>
@@ -357,7 +340,45 @@
 | :-----: | :---: | :---------------------: | :------: |
 | user_id | long  | 카카오 사용자 고유 번호 |    O     |
 
-### 응답
+### 응답 (OK 200)
+|     Key     | Type  |             Description             | Nullable |
+| :---------: | :---: | :---------------------------------: | :------: |
+|     id      | long  |          사용자 고유 번호           |    -     |
+|   room_id   |  int  |           사용자 방 번호            |    O     |
+| rate_manner |  int  | 사용자 매너 점수</br>[1~10: 별 5개] |    O     |
+|  rate_room  |  int  |  매물 관련 점수</br>[1~10: 별 5개]  |    O     |
+| rate_count  |  int  |             총 평가 수              |    O     |
+
+</br>
+
+## 사용자 평가 등록
+### GET /api/
+`(예시) /api/`
+</br>
+
+### 요청
+|  Key  | Type  | Description  | Required |
+| :---: | :---: | :----------: | :------: |
+| page  |  int  | page of list |    -     |
+
+### 응답 (OK 200)
+|  Key  | Type  | Description  | Required |
+| :---: | :---: | :----------: | :------: |
+| page  |  int  | page of list |    -     |
+
+</br>
+
+## 사용자 평가 갱신
+### GET /api/
+`(예시) /api/`
+</br>
+
+### 요청
+|  Key  | Type  | Description  | Required |
+| :---: | :---: | :----------: | :------: |
+| page  |  int  | page of list |    -     |
+
+### 응답 (OK 200)
 |  Key  | Type  | Description  | Required |
 | :---: | :---: | :----------: | :------: |
 | page  |  int  | page of list |    -     |
