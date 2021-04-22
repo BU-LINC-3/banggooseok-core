@@ -1,6 +1,7 @@
 package kr.banggooseok.database.dao;
 
 import kr.banggooseok.database.vo.RoomsSimpleVO;
+import kr.banggooseok.database.vo.RoomsVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -38,4 +39,16 @@ public class RoomsDAO {
         return session.selectOne("rooms.selectRoomListLength");
     }
 
+    /**
+     * Room 정보 쿼리
+     * @param room_id Room 고유 번호
+     * @return Room 반환
+     */
+    public RoomsVO selectRoom(int room_id) {
+        Map<String, Integer> parameters = new HashMap<>();
+
+        parameters.put("room_id", room_id);
+
+        return session.selectOne("rooms.selectRoom", parameters);
+    }
 }

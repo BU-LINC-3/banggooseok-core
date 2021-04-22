@@ -3,5 +3,6 @@
 <configuration>
     <typeAliases>
         <typeAlias alias="RoomsSimpleVO" type="kr.banggooseok.database.vo.RoomsSimpleVO" />
+        <typeAlias alias="RoomsVO" type="kr.banggooseok.database.vo.RoomsVO" />
     </typeAliases>
 </configuration>

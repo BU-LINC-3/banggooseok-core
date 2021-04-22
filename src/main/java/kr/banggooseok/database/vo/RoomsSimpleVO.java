@@ -2,6 +2,7 @@ package kr.banggooseok.database.vo;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -23,17 +24,23 @@ public class RoomsSimpleVO {
     @SerializedName("fee")
     private int fee;
 
-    @SerializedName("const_type")
-    private int const_type;
-
     @SerializedName("floor")
     private int floor;
+
+    @SerializedName("const_type")
+    private int const_type;
 
     @SerializedName("address")
     private String address;
 
     @SerializedName("images")
     private List<String> images;
+
+    @SerializedName("timestamp")
+    private long timestamp;
+
+    @SerializedName("trans_done")
+    private boolean trans_done;
 
     public int getId() {
         return id;
@@ -75,20 +82,20 @@ public class RoomsSimpleVO {
         this.fee = fee;
     }
 
-    public int getConst_type() {
-        return const_type;
-    }
-
-    public void setConst_type(int const_type) {
-        this.const_type = const_type;
-    }
-
     public int getFloor() {
         return floor;
     }
 
     public void setFloor(int floor) {
         this.floor = floor;
+    }
+
+    public int getConst_type() {
+        return const_type;
+    }
+
+    public void setConst_type(int const_type) {
+        this.const_type = const_type;
     }
 
     public String getAddress() {
@@ -112,5 +119,21 @@ public class RoomsSimpleVO {
         }
 
         this.images = imageList;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp.toInstant().toEpochMilli();
+    }
+
+    public boolean isTrans_done() {
+        return trans_done;
+    }
+
+    public void setTrans_done(boolean trans_done) {
+        this.trans_done = trans_done;
     }
 }

@@ -2,6 +2,7 @@ package kr.banggooseok.database.repository;
 
 import kr.banggooseok.database.dao.RoomsDAO;
 import kr.banggooseok.database.vo.RoomsSimpleVO;
+import kr.banggooseok.database.vo.RoomsVO;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -28,6 +29,11 @@ public class RoomsRepository {
         hashMap.put("rooms", rooms);
 
         return hashMap;
+    }
+
+    public RoomsVO getRoom(int room_id) {
+
+        return roomsDAO.selectRoom(room_id);
     }
 
 }

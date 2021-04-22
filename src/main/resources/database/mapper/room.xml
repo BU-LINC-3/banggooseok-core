@@ -3,7 +3,7 @@
 <mapper namespace="rooms">
     <!-- Query Room List -->
     <select id="selectRoomList" parameterType="Integer" resultType="RoomsSimpleVO">
-        SELECT id, title, trans_type, deposit, fee, const_type, floor, address, images
+        SELECT id, title, trans_type, deposit, fee, const_type, floor, address, images, timestamp, trans_done
         FROM rooms
         LIMIT #{from}, #{count}
     </select>
@@ -12,6 +12,15 @@
     <select id="selectRoomListLength" resultType="int">
         SELECT COUNT(id)
         FROM rooms
+    </select>
+
+    <!-- Query Room List -->
+    <select id="selectRoom" parameterType="Integer" resultType="RoomsVO">
+        SELECT *
+        FROM rooms
+        <where>
+            id = #{room_id}
+        </where>
     </select>
 
 </mapper>

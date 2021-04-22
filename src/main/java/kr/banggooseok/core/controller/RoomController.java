@@ -1,6 +1,7 @@
 package kr.banggooseok.core.controller;
 
 import kr.banggooseok.database.repository.RoomsRepository;
+import kr.banggooseok.database.vo.RoomsVO;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +21,12 @@ public class RoomController {
     public HashMap<String, Object> getRoomList(@PathVariable int page) {
 
         return roomsRepository.getRoomList(page);
+    }
+
+    @RequestMapping(value = "/{room_id}", method = RequestMethod.GET)
+    public RoomsVO getRoom(@PathVariable int room_id) {
+
+        return roomsRepository.getRoom(room_id);
     }
 
 }
