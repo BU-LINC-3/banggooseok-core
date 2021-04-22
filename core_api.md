@@ -36,11 +36,11 @@
 | page  |  int  | 목록 페이지 번호</br>[0~N] |    O     |
 
 ### 응답
-|     Key      |     Type     |    Description     | Nullable |
-| :----------: | :----------: | :----------------: | :------: |
-|   page_max   |     int      | 마지막 페이지 번호 |    -     |
-| rooms_length |     int      |   매물 목록 크기   |    -     |
-|    rooms     | Array\<Room> |     매물 목록      |    -     |
+|     Key      |     Type     |  Description   | Nullable |
+| :----------: | :----------: | :------------: | :------: |
+|   page_max   |     int      | 총 페이지 개수 |    -     |
+| rooms_length |     int      | 매물 목록 크기 |    -     |
+|    rooms     | Array\<Room> |   매물 목록    |    -     |
 
 </br>
 
