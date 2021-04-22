@@ -7,9 +7,7 @@
                (
                    SELECT COUNT(room_id)
                    FROM favorites
-                   <where>
-                       room_id = id
-                   </where>
+                   WHERE  room_id = id
                ) AS fav_count
         FROM rooms
         LIMIT #{from}, #{count}
@@ -21,20 +19,18 @@
         FROM rooms
     </select>
 
-    <!-- Query Room List -->
+    <!-- Query Room Detailed List -->
     <select id="selectRoom" parameterType="Integer" resultType="RoomsVO">
         SELECT *,
                 (
                     SELECT COUNT(room_id)
                     FROM favorites
-                    <where>
-                        room_id = id
-                    </where>
+                    WHERE room_id = id
+
                 ) AS fav_count
         FROM rooms
-        <where>
-            id = #{room_id}
-        </where>
+        WHERE id = #{room_id}
+
     </select>
 
 </mapper>
