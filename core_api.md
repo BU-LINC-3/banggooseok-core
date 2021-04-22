@@ -77,7 +77,7 @@
 | :---: | :---: | :------------------------: | :------: |
 | page  |  int  | 목록 페이지 번호</br>[0~N] |    O     |
 
-### 응답
+### 응답 (OK 200)
 |     Key      |     Type     |  Description   | Nullable |
 | :----------: | :----------: | :------------: | :------: |
 |   page_max   |     int      | 총 페이지 개수 |    -     |
@@ -159,7 +159,7 @@
 | :-----: | :---: | :------------: | :------: |
 | room_id |  int  | 매물 고유 번호 |    O     |
 
-### 응답
+### 응답 (OK 200)
 |     Key      |      Type      |                     Description                     | Nullable |
 | :----------: | :------------: | :-------------------------------------------------: | :------: |
 |      id      |      int       |                   매물 고유 번호                    |    -     |
@@ -201,37 +201,33 @@
 |  token  | String |     카카오 API 토근     |    O     |
 | user_id |  long  | 카카오 사용자 고유 번호 |    O     |
 
-|  POST   |  Type  |       Description       | Required |
-| :-----: | :----: | :---------------------: | :------: |
-|  token  | String |     카카오 API 토근     |    O     |
-| user_id |  long  | 카카오 사용자 고유 번호 |    O     |
+|     POST     |      Type      |                     Description                     | Required |
+| :----------: | :------------: | :-------------------------------------------------: | :------: |
+|    title     |     String     |          매물 제목</br>[30자 이내 텍스트]           |    O     |
+| description  |     String     |                      매물 설명                      |    O     |
+|  trans_type  |      int       |     거래 종류</br>[1: 월세 / 2: 전세 / 3: 년세]     |    O     |
+|   deposit    |      int       |      보증금</br>[거래 종류에 따라 0혹은 NULL]       |    -     |
+|     fee      |      int       |       월세</br>[거래 종류에 따라 0혹은 NULL]        |    -     |
+|  manage_fee  |      int       |                       관리비                        |    -     |
+| manage_tags  | Array\<String> |  관리비 항목</br>[관리비가 0혹은 NULL일 경우 NULL]  |    -     |
+|    floor     |      int       | 매물 층</br>[N~-1: 지하 / 0: 정보 없음 / 1~N: 지상] |    -     |
+| const_floor  |      int       |                      건물 층수                      |    -     |
+|  const_type  |      int       |       건물 구조</br>[1부터 시작하며 방 개수]        |    -     |
+| valid_dimen  |     float      |             전용 면적</br>[미터법 사용]             |    -     |
+| supply_dimen |     float      |             공급 면적</br>[미터법 사용]             |    -     |
+|  avail_date  |      long      |         입주 가능 일자</br>[Unix Timestamp]         |    -     |
+|   options    | Array\<String> |                      옵션 목록                      |    -     |
+|   elevator   |    boolean     |                     엘리베이터                      |    -     |
+|   parking    |      int       |      가용 주차 공간</br>[수용 가능한 차량 수]       |    -     |
+|   temp_sys   |      int       |     난방 종류</br>[1: 개별 / 2: 지역 / 3: 중앙]     |    -     |
+|   address    |     String     |            매물 주소지</br>[도로명 주소]            |    O     |
+|   contact    |     String     |           연락처</br>[전화번호 혹은 링크]           |    O     |
+|  trans_done  |    boolean     | 매물 거래 완료 여부</br>[0: 거래 중 / 1: 거래 완료] |    O     |
 
-### 응답
-|  Key  | Type  | Description  | Required |
-| :---: | :---: | :----------: | :------: |
-| page  |  int  | page of list |    -     |
-
-</br>
-
-## 관심 매물 등록
-### GET /api/user/{user_id}/favorite/add
-`(예시) /api/user/12332452435/favorit/add?token=a9ace025c90c0da2161075da6ddd3492a2fca776&room_id=123456`
-</br>
-
-### 요청
-|  Path   | Type  |       Description       | Required |
-| :-----: | :---: | :---------------------: | :------: |
-| user_id | long  | 카카오 사용자 고유 번호 |    O     |
-
-|  Query  |  Type  |   Description   | Required |
-| :-----: | :----: | :-------------: | :------: |
-|  token  | String | 카카오 API 토큰 |    O     |
-| room_id |  int   | 매물 고유 번호  |    O     |
-
-### 응답
-|  Key  | Type  | Description  | Required |
-| :---: | :---: | :----------: | :------: |
-| page  |  int  | page of list |    -     |
+### 응답 (OK 200)
+|   Key   | Type  |  Description   | Nullable |
+| :-----: | :---: | :------------: | :------: |
+| room_id |  int  | 매물 고유 번호 |    -     |
 
 </br>
 
@@ -247,9 +243,61 @@
 |  page   |  int  |    목록 페이지 번호     |    O     |
 
 ### 응답
-|  Key  | Type  | Description  | Required |
-| :---: | :---: | :----------: | :------: |
-| page  |  int  | page of list |    -     |
+|    Key     |       Type       |  Description   | Nullable |
+| :--------: | :--------------: | :------------: | :------: |
+|  page_max  |       int        | 총 페이지 개수 |    -     |
+| fav_length |       int        | 매물 목록 크기 |    -     |
+| favorites  | Array\<Favorite> |   매물 목록    |    -     |
+
+| Favorite Field | Type  |   Description    | Nullable |
+| :------------: | :---: | :--------------: | :------: |
+|    user_id     | long  | 사용자 고유 번호 |    -     |
+|    room_id     |  int  |  매물 고유 번호  |    -     |
+|   timestamp    | long  |    등록 시점     |    -     |
+
+</br>
+
+## 관심 매물 등록
+### GET /api/user/{user_id}/favorite/{room_id}/add
+`(예시) /api/user/12332452435/favorite/12345/add?token=a9ace025c90c0da2161075da6ddd3492a2fca776`
+</br>
+
+### 요청
+|  Path   | Type  |       Description       | Required |
+| :-----: | :---: | :---------------------: | :------: |
+| user_id | long  | 카카오 사용자 고유 번호 |    O     |
+| room_id |  int  |     매물 고유 번호      |    O     |
+
+| Query |  Type  |   Description   | Required |
+| :---: | :----: | :-------------: | :------: |
+| token | String | 카카오 API 토큰 |    O     |
+
+### 응답 (OK 200)
+|  Key  | Type  | Description | Required |
+| :---: | :---: | :---------: | :------: |
+|   -   |   -   |      -      |    -     |
+
+</br>
+
+## 관심 매물 삭제
+### GET /api/user/{user_id}/favorite/{room_id}/delete
+`(예시) /api/user/12332452435/favorite/12345/add?token=a9ace025c90c0da2161075da6ddd3492a2fca776`
+</br>
+
+### 요청
+|  Path   | Type  |       Description       | Required |
+| :-----: | :---: | :---------------------: | :------: |
+| user_id | long  | 카카오 사용자 고유 번호 |    O     |
+| room_id |  int  |     매물 고유 번호      |    O     |
+
+| Query |  Type  |   Description   | Required |
+| :---: | :----: | :-------------: | :------: |
+| token | String | 카카오 API 토큰 |    O     |
+
+### 응답 (OK 200)
+|  Key  | Type  | Description | Required |
+| :---: | :---: | :---------: | :------: |
+|   -   |   -   |      -      |    -     |
 
 </br>
 
