@@ -30,5 +30,6 @@
 |    image     | String  |   매물 이미지 목록    |    -     |
 |   contact    | String  |        연락처         |    -     |
 |  timestamp   |  long   |       게시 시간       |    -     |
+|  trans_done  | boolean |  매물 거래 완료 여부  |    -     |
 
 </br>
