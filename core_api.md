@@ -23,7 +23,8 @@
                 "/aadsdafaf"
             ],
             "timestamp": 1618879563000,
-            "trans_done": false
+            "trans_done": false,
+            "fav_count": 1
         },
         {
             "id": 2,
@@ -41,7 +42,8 @@
                 "/sdfsdf"
             ],
             "timestamp": 1618892169000,
-            "trans_done": false
+            "trans_done": false,
+            "fav_count": 0
         },
         {
             "id": 3,
@@ -60,7 +62,8 @@
                 "/sdfsdf"
             ],
             "timestamp": 1618892293000,
-            "trans_done": false
+            "trans_done": false,
+            "fav_count": 0
         }
     ],
     "rooms_length": 3,
@@ -96,6 +99,7 @@
 |   images   | Array\<String> |      매물 이미지 목록</br>[이미지 경로만 표시]      |    -     |
 | timestamp  |      long      |           게시 시간</br>[Unix Timestamp]            |    -     |
 | trans_done |    boolean     | 매물 거래 완료 여부</br>[0: 거래 중 / 1: 거래 완료] |    -     |
+| fav_count  |      int       |               관심 매물로 지정된 횟수               |    -     |
 
 </br>
 
@@ -144,7 +148,8 @@
         "/sdfsdf"
     ],
     "timestamp": 1618892293000,
-    "trans_done": false
+    "trans_done": false,
+    "fav_count": 0
 }
 ```
 </br>
@@ -181,6 +186,7 @@
 |   contact    |     String     |           연락처</br>[전화번호 혹은 링크]           |    -     |
 |  timestamp   |      long      |           게시 시간</br>[Unix Timestamp]            |    -     |
 |  trans_done  |    boolean     | 매물 거래 완료 여부</br>[0: 거래 중 / 1: 거래 완료] |    -     |
+|  fav_count   |      int       |               관심 매물로 지정된 횟수               |    -     |
 
 </br>
 
