@@ -31,5 +31,16 @@
 |   contact    | String  |        연락처         |    -     |
 |  timestamp   |  long   |       게시 시간       |    -     |
 |  trans_done  | boolean |  매물 거래 완료 여부  |    -     |
+</br>
 
+## favorites
+### 관심 매물 테이블
+</br>
+
+### Column
+|   Name    | Type  |      Description      | Nullable |
+| :-------: | :---: | :-------------------: | :------: |
+|  room_id  |  int  |    매물 고유 번호     |    -     |
+|  user_id  | long  | 매물 게시자 고유 번호 |    -     |
+| timestamp | long  |       게시 시간       |    -     |
 </br>
