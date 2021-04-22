@@ -55,7 +55,6 @@
                temp_sys,
                address,
                contact,
-               images,
                trans_done,
                UNIX_TIMESTAMP(avail_date) AS avail_date,
                UNIX_TIMESTAMP(timestamp) AS timestamp,
