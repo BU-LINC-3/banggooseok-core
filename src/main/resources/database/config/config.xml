@@ -4,5 +4,6 @@
     <typeAliases>
         <typeAlias alias="RoomsSimpleVO" type="kr.banggooseok.database.vo.RoomsSimpleVO" />
         <typeAlias alias="RoomsVO" type="kr.banggooseok.database.vo.RoomsVO" />
+        <typeAlias alias="ImagesVO" type="kr.banggooseok.database.vo.ImagesVO" />
     </typeAliases>
 </configuration>

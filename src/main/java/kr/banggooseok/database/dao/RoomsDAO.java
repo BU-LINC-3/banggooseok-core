@@ -41,13 +41,13 @@ public class RoomsDAO {
 
     /**
      * Room 정보 쿼리
-     * @param room_id Room 고유 번호
+     * @param roomId Room 고유 번호
      * @return Room 반환
      */
-    public RoomsVO selectRoom(int room_id) {
+    public RoomsVO selectRoom(int roomId) {
         Map<String, Integer> parameters = new HashMap<>();
 
-        parameters.put("room_id", room_id);
+        parameters.put("room_id", roomId);
 
         return session.selectOne("rooms.selectRoom", parameters);
     }

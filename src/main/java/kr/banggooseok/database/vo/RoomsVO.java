@@ -2,7 +2,6 @@ package kr.banggooseok.database.vo;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -115,8 +114,8 @@ public class RoomsVO extends RoomsSimpleVO {
         return avail_date;
     }
 
-    public void setAvail_date(Timestamp avail_date) {
-        this.avail_date = avail_date.toInstant().toEpochMilli();
+    public void setAvail_date(long avail_date) {
+        this.avail_date = avail_date;
     }
 
     public List<String> getOptions() {

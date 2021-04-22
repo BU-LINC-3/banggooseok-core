@@ -84,22 +84,27 @@
 | rooms_length |     int      | 매물 목록 크기 |    -     |
 |    rooms     | Array\<Room> |   매물 목록    |    -     |
 
-</br>
+| Room Field |     Type      |                     Description                     | Nullable |
+| :--------: | :-----------: | :-------------------------------------------------: | :------: |
+|     id     |      int      |                   매물 고유 번호                    |    -     |
+|   title    |    String     |          매물 제목</br>[30자 이내 텍스트]           |    -     |
+| trans_type |      int      |     거래 종류</br>[1: 월세 / 2: 전세 / 3: 년세]     |    -     |
+|  deposit   |      int      |      보증금</br>[거래 종류에 따라 0혹은 NULL]       |    O     |
+|    fee     |      int      |       월세</br>[거래 종류에 따라 0혹은 NULL]        |    O     |
+|   floor    |      int      | 매물 층</br>[N~-1: 지하 / 0: 정보 없음 / 1~N: 지상] |    O     |
+| const_type |      int      |            건물 구조</br>[1~N / 방 개수]            |    O     |
+|  address   |    String     |            매물 주소지</br>[도로명 주소]            |    -     |
+|   images   | Array\<Image> |                  매물 이미지 목록                   |    -     |
+| timestamp  |     long      |           게시 시간</br>[Unix Timestamp]            |    -     |
+| trans_done |    boolean    | 매물 거래 완료 여부</br>[0: 거래 중 / 1: 거래 완료] |    -     |
+| fav_count  |      int      |               관심 매물로 지정된 횟수               |    -     |
 
-| Room Field |      Type      |                     Description                     | Nullable |
-| :--------: | :------------: | :-------------------------------------------------: | :------: |
-|     id     |      int       |                   매물 고유 번호                    |    -     |
-|   title    |     String     |          매물 제목</br>[30자 이내 텍스트]           |    -     |
-| trans_type |      int       |     거래 종류</br>[1: 월세 / 2: 전세 / 3: 년세]     |    -     |
-|  deposit   |      int       |      보증금</br>[거래 종류에 따라 0혹은 NULL]       |    O     |
-|    fee     |      int       |       월세</br>[거래 종류에 따라 0혹은 NULL]        |    O     |
-|   floor    |      int       | 매물 층</br>[N~-1: 지하 / 0: 정보 없음 / 1~N: 지상] |    O     |
-| const_type |      int       |            건물 구조</br>[1~N / 방 개수]            |    O     |
-|  address   |     String     |            매물 주소지</br>[도로명 주소]            |    -     |
-|   images   | Array\<String> |      매물 이미지 목록</br>[이미지 경로만 표시]      |    -     |
-| timestamp  |      long      |           게시 시간</br>[Unix Timestamp]            |    -     |
-| trans_done |    boolean     | 매물 거래 완료 여부</br>[0: 거래 중 / 1: 거래 완료] |    -     |
-| fav_count  |      int       |               관심 매물로 지정된 횟수               |    -     |
+| Image Field |  Type  |        Description        | Nullable |
+| :---------: | :----: | :-----------------------: | :------: |
+|     id      |  int   |     이미지 고유 번호      |    -     |
+|   user_id   |  long  | 업로드한 사용자 고유 번호 |    -     |
+|    path     | String |        이미지 경로        |    -     |
+|  timestamp  |  long  |        업로드 시간        |    -     |
 
 </br>
 
@@ -182,11 +187,18 @@
 |   parking    |      int       |      가용 주차 공간</br>[수용 가능한 차량 수]       |    O     |
 |   temp_sys   |      int       |     난방 종류</br>[1: 개별 / 2: 지역 / 3: 중앙]     |    O     |
 |   address    |     String     |            매물 주소지</br>[도로명 주소]            |    -     |
-|    image     | Array\<String> |      매물 이미지 목록</br>[이미지 경로만 표시]      |    -     |
+|    image     | Array\<Image>  |                  매물 이미지 목록                   |    -     |
 |   contact    |     String     |           연락처</br>[전화번호 혹은 링크]           |    -     |
 |  timestamp   |      long      |           게시 시간</br>[Unix Timestamp]            |    -     |
 |  trans_done  |    boolean     | 매물 거래 완료 여부</br>[0: 거래 중 / 1: 거래 완료] |    -     |
 |  fav_count   |      int       |               관심 매물로 지정된 횟수               |    -     |
+
+| Image Field |  Type  |        Description        | Nullable |
+| :---------: | :----: | :-----------------------: | :------: |
+|     id      |  int   |     이미지 고유 번호      |    -     |
+|   user_id   |  long  | 업로드한 사용자 고유 번호 |    -     |
+|    path     | String |        이미지 경로        |    -     |
+|  timestamp  |  long  |        업로드 시간        |    -     |
 
 </br>
 
@@ -243,17 +255,34 @@
 |  page   |  int  |    목록 페이지 번호     |    O     |
 
 ### 응답
-|    Key     |       Type       |  Description   | Nullable |
-| :--------: | :--------------: | :------------: | :------: |
-|  page_max  |       int        | 총 페이지 개수 |    -     |
-| fav_length |       int        | 매물 목록 크기 |    -     |
-| favorites  | Array\<Favorite> |   매물 목록    |    -     |
+|    Key     |     Type     |  Description   | Nullable |
+| :--------: | :----------: | :------------: | :------: |
+|  page_max  |     int      | 총 페이지 개수 |    -     |
+| fav_length |     int      | 매물 목록 크기 |    -     |
+| fav_rooms  | Array\<Room> |   매물 목록    |    -     |
 
-| Favorite Field | Type  |   Description    | Nullable |
-| :------------: | :---: | :--------------: | :------: |
-|    user_id     | long  | 사용자 고유 번호 |    -     |
-|    room_id     |  int  |  매물 고유 번호  |    -     |
-|   timestamp    | long  |    등록 시점     |    -     |
+| Room Field |     Type      |                     Description                     | Nullable |
+| :--------: | :-----------: | :-------------------------------------------------: | :------: |
+|     id     |      int      |                   매물 고유 번호                    |    -     |
+|   title    |    String     |          매물 제목</br>[30자 이내 텍스트]           |    -     |
+| trans_type |      int      |     거래 종류</br>[1: 월세 / 2: 전세 / 3: 년세]     |    -     |
+|  deposit   |      int      |      보증금</br>[거래 종류에 따라 0혹은 NULL]       |    O     |
+|    fee     |      int      |       월세</br>[거래 종류에 따라 0혹은 NULL]        |    O     |
+|   floor    |      int      | 매물 층</br>[N~-1: 지하 / 0: 정보 없음 / 1~N: 지상] |    O     |
+| const_type |      int      |            건물 구조</br>[1~N / 방 개수]            |    O     |
+|  address   |    String     |            매물 주소지</br>[도로명 주소]            |    -     |
+|   images   | Array\<Image> |                  매물 이미지 목록                   |    -     |
+| timestamp  |     long      |           게시 시간</br>[Unix Timestamp]            |    -     |
+| trans_done |    boolean    | 매물 거래 완료 여부</br>[0: 거래 중 / 1: 거래 완료] |    -     |
+| fav_count  |      int      |               관심 매물로 지정된 횟수               |    -     |
+
+
+| Image Field |  Type  |        Description        | Nullable |
+| :---------: | :----: | :-----------------------: | :------: |
+|     id      |  int   |     이미지 고유 번호      |    -     |
+|   user_id   |  long  | 업로드한 사용자 고유 번호 |    -     |
+|    path     | String |        이미지 경로        |    -     |
+|  timestamp  |  long  |        업로드 시간        |    -     |
 
 </br>
 
