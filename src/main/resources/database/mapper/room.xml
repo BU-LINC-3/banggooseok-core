@@ -48,4 +48,11 @@
                             FROM favorites
                             WHERE favorites.user_id = #{user_id})
     </select>
+
+    <!-- Query FavRoom Add -->
+    <insert id="insertFavroomAdd">
+        INSERT INTO favorites(user_id, room_id)
+        VALUES (#{user_id}, #{room_id})
+    </insert>
+
 </mapper>
