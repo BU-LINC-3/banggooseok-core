@@ -30,7 +30,22 @@
                 ) AS fav_count
         FROM rooms
         WHERE id = #{room_id}
-
     </select>
 
+    <!-- Query Room Add -->
+    <insert  id="insertRoomAdd">
+        INSERT INTO rooms(user_id, title, description, trans_type, fee, manage_fee, manage_tags, deposit, floor, const_floor, const_type,
+                          valid_dimen, supply_dimen, avail_date, options, elevator, parking, temp_sys, address, contact, images, timestamp, trans_done)
+        VALUES (#{id},#{user_id},#{title},#{description},#{trans_type},#{fee},#{manage_fee},#{manage_tags},#{deposit},#{floor},#{flconst_flooroor},#{const_type},
+                #{valid_dimen},#{supply_dimen},#{avail_date},#{options},#{elevator},#{parking},#{temp_sys},#{address},#{contact},#{images},#{timestamp},#{trans_done})
+    </insert >
+
+    <!-- Query FavRoom List -->
+   <select id="selectFavList" parameterType="Integer" resultType="FavRoomsVO">
+        SELECT id, title, description, fee, deposit, trans_type,images
+        FROM rooms
+        WHERE id IN (SELECT room_id
+                            FROM favorites
+                            WHERE favorites.user_id = #{user_id})
+    </select>
 </mapper>
