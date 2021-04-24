@@ -2,10 +2,7 @@ package kr.banggooseok.core.controller;
 
 import kr.banggooseok.database.repository.RoomsRepository;
 import kr.banggooseok.database.vo.RoomsVO;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -27,6 +24,16 @@ public class RoomController {
     public RoomsVO getRoom(@PathVariable int room_id) {
 
         return roomsRepository.getRoom(room_id);
+    }
+
+    // TODO: TOKEN 처리
+    @RequestMapping(value = "/submit", method = RequestMethod.POST)
+    public HashMap<String, Object> postRoom(@RequestBody RoomsVO room,
+                                            @RequestParam String token,
+                                            @RequestParam long user_id) {
+        room.setUser_id(user_id);
+
+        return roomsRepository.postRoom(room);
     }
 
 }

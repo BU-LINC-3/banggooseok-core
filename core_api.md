@@ -1,6 +1,6 @@
 # 방구석 코어 API 문서 (작성 중)
 
-## 매물 목록 조회 ✔
+## 매물 목록 조회 ✅
 ### GET /api/room/list/{page}
 `(예시) /api/room/list/0`
 ```
@@ -136,7 +136,7 @@
 
 </br>
 
-## 매물 상세 조회 ✔
+## 매물 상세 조회 ✅
 ### GET /api/room/{room_id}
 `(예시) /api/room/12345`
 ```
@@ -240,36 +240,74 @@
 ## 매물 등록
 ### POST /api/room/submit
 `(예시) /api/room/submit?token=a9ace025c90c0da2161075da6ddd3492a2fca776&user_id=12345345463462`
+```
+
+```
 </br>
 
 ### 요청
+```
+curl -v -X POST "{BASE_URL}/api/room/submit?token={TOKEN}&user_id={ID}" \
+-d "{ \
+    \"description\": \"매물 테스트 설명 ~!@#$%^&*()_+1234asdf\", \
+    \"manage_fee\": 50000, \
+    \"manage_tags\": [ \
+        \"관리비1\", \
+        \"관리비2\", \
+        \"관리비3\", \
+        \"관리비4\" \
+    ], \
+    \"const_floor\": 2, \
+    \"valid_dimen\": 40.0, \
+    \"supply_dimen\": 50.0, \
+    \"avail_date\": 1617249600, \
+    \"options\": [ \
+        \"옵션1\", \
+        \"옵션2\", \
+        \"옵션3\", \
+        \"옵션4\", \
+        \"옵션5\" \
+    ], \
+    \"elevator\": true, \
+    \"parking\": 0, \
+    \"temp_sys\": 2, \
+    \"contact\": \"https://link.link/sdfsdf\", \
+    \"title\": \"매물 테스트용 제목 ~!@#$%^&*()_+1234asdf\", \
+    \"trans_type\": 1, \
+    \"deposit\": 50000000, \
+    \"fee\": 60000000, \
+    \"floor\": 3, \
+    \"const_type\": 1, \
+    \"address\": \"서울특별시 서초구\" \
+}"
+```
+
 |  Query  |  Type  |       Description       | Required |
 | :-----: | :----: | :---------------------: | :------: |
 |  token  | String |     카카오 API 토근     |    O     |
 | user_id |  long  | 카카오 사용자 고유 번호 |    O     |
 
-|     POST     |      Type      |                     Description                     | Required |
+|     POST     |      Type      |                     Description                     | Nullable |
 | :----------: | :------------: | :-------------------------------------------------: | :------: |
-|    title     |     String     |          매물 제목</br>[30자 이내 텍스트]           |    O     |
-| description  |     String     |                      매물 설명                      |    O     |
-|  trans_type  |      int       |     거래 종류</br>[1: 월세 / 2: 전세 / 3: 년세]     |    O     |
-|   deposit    |      int       |      보증금</br>[거래 종류에 따라 0혹은 NULL]       |    -     |
-|     fee      |      int       |       월세</br>[거래 종류에 따라 0혹은 NULL]        |    -     |
-|  manage_fee  |      int       |                       관리비                        |    -     |
-| manage_tags  | Array\<String> |  관리비 항목</br>[관리비가 0혹은 NULL일 경우 NULL]  |    -     |
-|    floor     |      int       | 매물 층</br>[N~-1: 지하 / 0: 정보 없음 / 1~N: 지상] |    -     |
-| const_floor  |      int       |                      건물 층수                      |    -     |
-|  const_type  |      int       |       건물 구조</br>[1부터 시작하며 방 개수]        |    -     |
-| valid_dimen  |     float      |             전용 면적</br>[미터법 사용]             |    -     |
-| supply_dimen |     float      |             공급 면적</br>[미터법 사용]             |    -     |
-|  avail_date  |      long      |         입주 가능 일자</br>[Unix Timestamp]         |    -     |
-|   options    | Array\<String> |                      옵션 목록                      |    -     |
-|   elevator   |    boolean     |                     엘리베이터                      |    -     |
-|   parking    |      int       |      가용 주차 공간</br>[수용 가능한 차량 수]       |    -     |
-|   temp_sys   |      int       |     난방 종류</br>[1: 개별 / 2: 지역 / 3: 중앙]     |    -     |
-|   address    |     String     |            매물 주소지</br>[도로명 주소]            |    O     |
-|   contact    |     String     |           연락처</br>[전화번호 혹은 링크]           |    O     |
-|  trans_done  |    boolean     | 매물 거래 완료 여부</br>[0: 거래 중 / 1: 거래 완료] |    O     |
+|    title     |     String     |          매물 제목</br>[30자 이내 텍스트]           |    -     |
+| description  |     String     |                      매물 설명                      |    -     |
+|  trans_type  |      int       |     거래 종류</br>[1: 월세 / 2: 전세 / 3: 년세]     |    -     |
+|   deposit    |      int       |      보증금</br>[거래 종류에 따라 0혹은 NULL]       |    O     |
+|     fee      |      int       |       월세</br>[거래 종류에 따라 0혹은 NULL]        |    O     |
+|  manage_fee  |      int       |                       관리비                        |    O     |
+| manage_tags  | Array\<String> |  관리비 항목</br>[관리비가 0혹은 NULL일 경우 NULL]  |    O     |
+|    floor     |      int       | 매물 층</br>[N~-1: 지하 / 0: 정보 없음 / 1~N: 지상] |    O     |
+| const_floor  |      int       |                      건물 층수                      |    O     |
+|  const_type  |      int       |       건물 구조</br>[1부터 시작하며 방 개수]        |    O     |
+| valid_dimen  |     float      |             전용 면적</br>[미터법 사용]             |    O     |
+| supply_dimen |     float      |             공급 면적</br>[미터법 사용]             |    O     |
+|  avail_date  |      long      |         입주 가능 일자</br>[Unix Timestamp]         |    O     |
+|   options    | Array\<String> |                      옵션 목록                      |    O     |
+|   elevator   |    boolean     |                     엘리베이터                      |    O     |
+|   parking    |      int       |      가용 주차 공간</br>[수용 가능한 차량 수]       |    O     |
+|   temp_sys   |      int       |     난방 종류</br>[1: 개별 / 2: 지역 / 3: 중앙]     |    O     |
+|   address    |     String     |            매물 주소지</br>[도로명 주소]            |    -     |
+|   contact    |     String     |           연락처</br>[전화번호 혹은 링크]           |    -     |
 
 ### 응답 (OK 200)
 |   Key   | Type  |  Description   | Nullable |
@@ -437,7 +475,7 @@
 
 </br>
 
-## 매물 이미지 목록 조회 ✔
+## 매물 이미지 목록 조회 ✅
 ### GET /api/image/{room_id}
 `(예시) /api/image/3`
 ```

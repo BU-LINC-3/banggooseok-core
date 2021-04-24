@@ -51,4 +51,9 @@ public class RoomsDAO {
 
         return session.selectOne("rooms.selectRoom", parameters);
     }
+
+    public int insertRoom(RoomsVO room) {
+
+        return session.insert("rooms.insertRoom", room);
+    }
 }

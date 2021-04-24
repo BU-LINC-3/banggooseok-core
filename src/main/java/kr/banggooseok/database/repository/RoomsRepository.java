@@ -36,4 +36,11 @@ public class RoomsRepository {
         return roomsDAO.selectRoom(room_id);
     }
 
+    public HashMap<String, Object> postRoom(RoomsVO room) {
+        HashMap<String, Object> hashMap = new HashMap<>();
+
+        hashMap.put("room_id", roomsDAO.insertRoom(room));
+
+        return hashMap;
+    }
 }

@@ -71,6 +71,7 @@ public class RoomsVO extends RoomsSimpleVO {
         this.manage_fee = manage_fee;
     }
 
+    // TODO: DB INSERT 처리
     public List<String> getManage_tags() {
         return manage_tags;
     }
@@ -118,6 +119,7 @@ public class RoomsVO extends RoomsSimpleVO {
         this.avail_date = avail_date;
     }
 
+    // TODO: DB INSERT 처리
     public List<String> getOptions() {
         return options;
     }
