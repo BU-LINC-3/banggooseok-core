@@ -1,7 +1,7 @@
 # 방구석 코어 DB 문서 (작성 중)
 
 ## rooms
-### 매물 목록 테이블
+### 매물 테이블
 </br>
 
 ### Column
@@ -27,7 +27,6 @@
 |   parking    |   int   |    가용 주차 공간     |    O     |
 |   temp_sys   |   int   |       난방 종류       |    O     |
 |   address    | String  |      매물 주소지      |    -     |
-|    image     | String  |   매물 이미지 목록    |    -     |
 |   contact    | String  |        연락처         |    -     |
 |  timestamp   |  long   |       게시 시간       |    -     |
 |  trans_done  | boolean |  매물 거래 완료 여부  |    -     |
@@ -40,7 +39,48 @@
 ### Column
 |   Name    | Type  |      Description      | Nullable |
 | :-------: | :---: | :-------------------: | :------: |
+|    id     |  int  |       고유 번호       |    -     |
 |  room_id  |  int  |    매물 고유 번호     |    -     |
-|  user_id  | long  | 매물 게시자 고유 번호 |    -     |
-| timestamp | long  |       게시 시간       |    -     |
+|  user_id  | long  | 등록 사용자 고유 번호 |    -     |
+| timestamp | long  |       등록 시간       |    -     |
+</br>
+
+## images
+### 이미지 테이블
+</br>
+
+### Column
+|   Name    |  Type  |       Description       | Nullable |
+| :-------: | :----: | :---------------------: | :------: |
+|    id     |  int   |        고유 번호        |    -     |
+|  room_id  |  int   |     매물 고유 번호      |    -     |
+|  user_id  |  long  | 이미지 업로더 고유 번호 |    -     |
+|   path    | String |       이미지 경로       |    -     |
+| timestamp |  long  |       업로드 시간       |    -     |
+</br>
+
+## rates
+### 평가 테이블
+</br>
+
+### Column
+|     Name      | Type  |        Description         | Nullable |
+| :-----------: | :---: | :------------------------: | :------: |
+|      id       |  int  |         고유 번호          |    -     |
+|    user_id    | long  |  평가한 사용자 고유 번호   |    -     |
+| rated_user_id | long  | 평가 대상 사용자 고유 번호 |    -     |
+|  rate_manner  |  int  |         매너 지수          |    -     |
+|   rate_room   |  int  |       매물 정보 지수       |    -     |
+|   timestamp   | long  |         등록 시간          |    -     |
+</br>
+
+## users
+### 사용자 테이블
+</br>
+
+### Column
+|  Name   | Type  |   Description    | Nullable |
+| :-----: | :---: | :--------------: | :------: |
+|   id    | long  | 사용자 고유 번호 |    -     |
+| room_id |  int  | 내 방 고유 번호  |    -     |
 </br>

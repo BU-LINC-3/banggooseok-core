@@ -16,13 +16,32 @@
             "const_type": 1,
             "address": "서울특별시 강남구",
             "images": [
-                "/aadsdafaf",
-                "/aadsdafaf",
-                "/aadsdafaf",
-                "/aadsdafaf",
-                "/aadsdafaf"
+                {
+                    "id": 1,
+                    "user_id": 53487632487314,
+                    "path": "/image1.png",
+                    "timestamp": 1619098416
+                },
+                {
+                    "id": 2,
+                    "user_id": 53487632487314,
+                    "path": "/image2.png",
+                    "timestamp": 1619098416
+                },
+                {
+                    "id": 3,
+                    "user_id": 53487632487314,
+                    "path": "/image3.png",
+                    "timestamp": 1619098419
+                },
+                {
+                    "id": 4,
+                    "user_id": 53487632487314,
+                    "path": "/image4.png",
+                    "timestamp": 1619098419
+                }
             ],
-            "timestamp": 1618879563000,
+            "timestamp": 1618911963,
             "trans_done": false,
             "fav_count": 1
         },
@@ -36,12 +55,14 @@
             "const_type": 1,
             "address": "서울특별시 서초구",
             "images": [
-                "/sdfsdf",
-                "/sdfsdf",
-                "/sdfsdf",
-                "/sdfsdf"
+                {
+                    "id": 7,
+                    "user_id": 53487632487314,
+                    "path": "/asdasdewrfrew.jpg",
+                    "timestamp": 1619099195
+                }
             ],
-            "timestamp": 1618892169000,
+            "timestamp": 1618924569,
             "trans_done": false,
             "fav_count": 0
         },
@@ -55,13 +76,20 @@
             "const_type": 1,
             "address": "서울특별시 서초구",
             "images": [
-                "/sdfsdf",
-                "/sdfsdf",
-                "/sdfsdf",
-                "/sdfsdf",
-                "/sdfsdf"
+                {
+                    "id": 5,
+                    "user_id": 23487632487314,
+                    "path": "/image12312312.jpg",
+                    "timestamp": 1619099148
+                },
+                {
+                    "id": 6,
+                    "user_id": 23487632487314,
+                    "path": "/213123123123.jpg",
+                    "timestamp": 1619099181
+                }
             ],
-            "timestamp": 1618892293000,
+            "timestamp": 1618924693,
             "trans_done": false,
             "fav_count": 0
         }
@@ -123,9 +151,9 @@
         "관리비4"
     ],
     "const_floor": 2,
-    "valid_dimen": 40,
-    "supply_dimen": 50,
-    "avail_date": 1617217200000,
+    "valid_dimen": 40.0,
+    "supply_dimen": 50.0,
+    "avail_date": 1617249600,
     "options": [
         "옵션1",
         "옵션2",
@@ -146,13 +174,20 @@
     "const_type": 1,
     "address": "서울특별시 서초구",
     "images": [
-        "/sdfsdf",
-        "/sdfsdf",
-        "/sdfsdf",
-        "/sdfsdf",
-        "/sdfsdf"
+        {
+            "id": 5,
+            "user_id": 23487632487314,
+            "path": "/image12312312.jpg",
+            "timestamp": 1619099148
+        },
+        {
+            "id": 6,
+            "user_id": 23487632487314,
+            "path": "/213123123123.jpg",
+            "timestamp": 1619099181
+        }
     ],
-    "timestamp": 1618892293000,
+    "timestamp": 1618924693,
     "trans_done": false,
     "fav_count": 0
 }
