@@ -32,13 +32,15 @@
         WHERE id = #{room_id}
     </select>
 
-    <!-- Query Room Add -->
-    <insert  id="insertRoomAdd">
-        INSERT INTO rooms(user_id, title, description, trans_type, fee, manage_fee, manage_tags, deposit, floor, const_floor, const_type,
-                          valid_dimen, supply_dimen, avail_date, options, elevator, parking, temp_sys, address, contact, images, trans_done)
-        VALUES (#{user_id},#{title},#{description},#{trans_type},#{fee},#{manage_fee},#{manage_tags},#{deposit},#{floor},#{flconst_flooroor},#{const_type},
-                #{valid_dimen},#{supply_dimen},#{avail_date},#{options},#{elevator},#{parking},#{temp_sys},#{address},#{contact},#{images},#{trans_done})
-    </insert >
+    <!-- Insert Room -->
+    <insert  id="insertRoom" parameterMap="RoomsVO">
+        INSERT INTO rooms(user_id, title, description, trans_type, fee, manage_fee, manage_tags, deposit,
+                          floor, const_floor, const_type, valid_dimen, supply_dimen, avail_date, options,
+                          elevator, parking, temp_sys, address, contact)
+        VALUES (#{user_id}, #{title}, #{description}, #{trans_type}, #{fee}, #{manage_fee}, #{manage_tags}, #{deposit},
+                #{floor}, #{const_floor}, #{const_type}, #{valid_dimen}, #{supply_dimen}, #{avail_date}, #{options},
+                #{elevator}, #{parking}, #{temp_sys}, #{address}, #{contact})
+    </insert>
 
     <!-- Query FavRoom List -->
    <select id="selectFavList" parameterType="Integer" resultType="FavRoomsVO">
