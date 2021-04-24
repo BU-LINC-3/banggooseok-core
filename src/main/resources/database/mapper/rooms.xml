@@ -72,19 +72,14 @@
         WHERE id = #{room_id}
     </select>
 
-<!--    &lt;!&ndash;  insert 쿼리 &ndash;&gt;-->
-<!--    <insert id="insertUser" parameterType="UserVO">-->
-<!--        insert into user_info values(#{user_id}, #{user_pw})-->
-<!--    </insert>-->
-
-<!--    &lt;!&ndash; update 쿼리 &ndash;&gt;-->
-<!--    <update id="updateUser" parameterType="userVO">-->
-<!--        update user_info set user_pw=#{user_pw} where user_id=#{user_id}-->
-<!--    </update>-->
-
-<!--    &lt;!&ndash; delete 쿼리 &ndash;&gt;-->
-<!--    <delete id="deleteUser" parameterType="String">-->
-<!--        delete from user_info where user_id=#{value}-->
-<!--    </delete>-->
+    <!-- Insert Room -->
+    <insert  id="insertRoom" parameterMap="RoomsVO">
+        INSERT INTO rooms(user_id, title, description, trans_type, fee, manage_fee, manage_tags, deposit,
+                          floor, const_floor, const_type, valid_dimen, supply_dimen, avail_date, options,
+                          elevator, parking, temp_sys, address, contact)
+        VALUES (#{user_id}, #{title}, #{description}, #{trans_type}, #{fee}, #{manage_fee}, #{manage_tags}, #{deposit},
+                #{floor}, #{const_floor}, #{const_type}, #{valid_dimen}, #{supply_dimen}, #{avail_date}, #{options},
+                #{elevator}, #{parking}, #{temp_sys}, #{address}, #{contact})
+    </insert>
 
 </mapper>
