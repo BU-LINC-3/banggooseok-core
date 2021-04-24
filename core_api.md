@@ -1,6 +1,6 @@
 # 방구석 코어 API 문서 (작성 중)
 
-## 매물 목록 조회
+## 매물 목록 조회 ✔
 ### GET /api/room/list/{page}
 `(예시) /api/room/list/0`
 ```
@@ -16,13 +16,32 @@
             "const_type": 1,
             "address": "서울특별시 강남구",
             "images": [
-                "/aadsdafaf",
-                "/aadsdafaf",
-                "/aadsdafaf",
-                "/aadsdafaf",
-                "/aadsdafaf"
+                {
+                    "id": 1,
+                    "user_id": 53487632487314,
+                    "path": "/image1.png",
+                    "timestamp": 1619098416
+                },
+                {
+                    "id": 2,
+                    "user_id": 53487632487314,
+                    "path": "/image2.png",
+                    "timestamp": 1619098416
+                },
+                {
+                    "id": 3,
+                    "user_id": 53487632487314,
+                    "path": "/image3.png",
+                    "timestamp": 1619098419
+                },
+                {
+                    "id": 4,
+                    "user_id": 53487632487314,
+                    "path": "/image4.png",
+                    "timestamp": 1619098419
+                }
             ],
-            "timestamp": 1618879563000,
+            "timestamp": 1618911963,
             "trans_done": false,
             "fav_count": 1
         },
@@ -36,12 +55,14 @@
             "const_type": 1,
             "address": "서울특별시 서초구",
             "images": [
-                "/sdfsdf",
-                "/sdfsdf",
-                "/sdfsdf",
-                "/sdfsdf"
+                {
+                    "id": 7,
+                    "user_id": 53487632487314,
+                    "path": "/asdasdewrfrew.jpg",
+                    "timestamp": 1619099195
+                }
             ],
-            "timestamp": 1618892169000,
+            "timestamp": 1618924569,
             "trans_done": false,
             "fav_count": 0
         },
@@ -55,13 +76,20 @@
             "const_type": 1,
             "address": "서울특별시 서초구",
             "images": [
-                "/sdfsdf",
-                "/sdfsdf",
-                "/sdfsdf",
-                "/sdfsdf",
-                "/sdfsdf"
+                {
+                    "id": 5,
+                    "user_id": 23487632487314,
+                    "path": "/image12312312.jpg",
+                    "timestamp": 1619099148
+                },
+                {
+                    "id": 6,
+                    "user_id": 23487632487314,
+                    "path": "/213123123123.jpg",
+                    "timestamp": 1619099181
+                }
             ],
-            "timestamp": 1618892293000,
+            "timestamp": 1618924693,
             "trans_done": false,
             "fav_count": 0
         }
@@ -84,26 +112,31 @@
 | rooms_length |     int      | 매물 목록 크기 |    -     |
 |    rooms     | Array\<Room> |   매물 목록    |    -     |
 
+| Room Field |     Type      |                     Description                     | Nullable |
+| :--------: | :-----------: | :-------------------------------------------------: | :------: |
+|     id     |      int      |                   매물 고유 번호                    |    -     |
+|   title    |    String     |          매물 제목</br>[30자 이내 텍스트]           |    -     |
+| trans_type |      int      |     거래 종류</br>[1: 월세 / 2: 전세 / 3: 년세]     |    -     |
+|  deposit   |      int      |      보증금</br>[거래 종류에 따라 0혹은 NULL]       |    O     |
+|    fee     |      int      |       월세</br>[거래 종류에 따라 0혹은 NULL]        |    O     |
+|   floor    |      int      | 매물 층</br>[N~-1: 지하 / 0: 정보 없음 / 1~N: 지상] |    O     |
+| const_type |      int      |            건물 구조</br>[1~N / 방 개수]            |    O     |
+|  address   |    String     |            매물 주소지</br>[도로명 주소]            |    -     |
+|   images   | Array\<Image> |                  매물 이미지 목록                   |    -     |
+| timestamp  |     long      |           게시 시간</br>[Unix Timestamp]            |    -     |
+| trans_done |    boolean    | 매물 거래 완료 여부</br>[0: 거래 중 / 1: 거래 완료] |    -     |
+| fav_count  |      int      |               관심 매물로 지정된 횟수               |    -     |
+
+| Image Field |  Type  |        Description        | Nullable |
+| :---------: | :----: | :-----------------------: | :------: |
+|     id      |  int   |     이미지 고유 번호      |    -     |
+|   user_id   |  long  | 업로드한 사용자 고유 번호 |    -     |
+|    path     | String |        이미지 경로        |    -     |
+|  timestamp  |  long  |        업로드 시간        |    -     |
+
 </br>
 
-| Room Field |      Type      |                     Description                     | Nullable |
-| :--------: | :------------: | :-------------------------------------------------: | :------: |
-|     id     |      int       |                   매물 고유 번호                    |    -     |
-|   title    |     String     |          매물 제목</br>[30자 이내 텍스트]           |    -     |
-| trans_type |      int       |     거래 종류</br>[1: 월세 / 2: 전세 / 3: 년세]     |    -     |
-|  deposit   |      int       |      보증금</br>[거래 종류에 따라 0혹은 NULL]       |    O     |
-|    fee     |      int       |       월세</br>[거래 종류에 따라 0혹은 NULL]        |    O     |
-|   floor    |      int       | 매물 층</br>[N~-1: 지하 / 0: 정보 없음 / 1~N: 지상] |    O     |
-| const_type |      int       |            건물 구조</br>[1~N / 방 개수]            |    O     |
-|  address   |     String     |            매물 주소지</br>[도로명 주소]            |    -     |
-|   images   | Array\<String> |      매물 이미지 목록</br>[이미지 경로만 표시]      |    -     |
-| timestamp  |      long      |           게시 시간</br>[Unix Timestamp]            |    -     |
-| trans_done |    boolean     | 매물 거래 완료 여부</br>[0: 거래 중 / 1: 거래 완료] |    -     |
-| fav_count  |      int       |               관심 매물로 지정된 횟수               |    -     |
-
-</br>
-
-## 매물 상세 조회
+## 매물 상세 조회 ✔
 ### GET /api/room/{room_id}
 `(예시) /api/room/12345`
 ```
@@ -118,9 +151,9 @@
         "관리비4"
     ],
     "const_floor": 2,
-    "valid_dimen": 40,
-    "supply_dimen": 50,
-    "avail_date": 1617217200000,
+    "valid_dimen": 40.0,
+    "supply_dimen": 50.0,
+    "avail_date": 1617249600,
     "options": [
         "옵션1",
         "옵션2",
@@ -141,13 +174,20 @@
     "const_type": 1,
     "address": "서울특별시 서초구",
     "images": [
-        "/sdfsdf",
-        "/sdfsdf",
-        "/sdfsdf",
-        "/sdfsdf",
-        "/sdfsdf"
+        {
+            "id": 5,
+            "user_id": 23487632487314,
+            "path": "/image12312312.jpg",
+            "timestamp": 1619099148
+        },
+        {
+            "id": 6,
+            "user_id": 23487632487314,
+            "path": "/213123123123.jpg",
+            "timestamp": 1619099181
+        }
     ],
-    "timestamp": 1618892293000,
+    "timestamp": 1618924693,
     "trans_done": false,
     "fav_count": 0
 }
@@ -182,11 +222,18 @@
 |   parking    |      int       |      가용 주차 공간</br>[수용 가능한 차량 수]       |    O     |
 |   temp_sys   |      int       |     난방 종류</br>[1: 개별 / 2: 지역 / 3: 중앙]     |    O     |
 |   address    |     String     |            매물 주소지</br>[도로명 주소]            |    -     |
-|    image     | Array\<String> |      매물 이미지 목록</br>[이미지 경로만 표시]      |    -     |
+|    image     | Array\<Image>  |                  매물 이미지 목록                   |    -     |
 |   contact    |     String     |           연락처</br>[전화번호 혹은 링크]           |    -     |
 |  timestamp   |      long      |           게시 시간</br>[Unix Timestamp]            |    -     |
 |  trans_done  |    boolean     | 매물 거래 완료 여부</br>[0: 거래 중 / 1: 거래 완료] |    -     |
 |  fav_count   |      int       |               관심 매물로 지정된 횟수               |    -     |
+
+| Image Field |  Type  |        Description        | Nullable |
+| :---------: | :----: | :-----------------------: | :------: |
+|     id      |  int   |     이미지 고유 번호      |    -     |
+|   user_id   |  long  | 업로드한 사용자 고유 번호 |    -     |
+|    path     | String |        이미지 경로        |    -     |
+|  timestamp  |  long  |        업로드 시간        |    -     |
 
 </br>
 
@@ -243,17 +290,34 @@
 |  page   |  int  |    목록 페이지 번호     |    O     |
 
 ### 응답
-|    Key     |       Type       |  Description   | Nullable |
-| :--------: | :--------------: | :------------: | :------: |
-|  page_max  |       int        | 총 페이지 개수 |    -     |
-| fav_length |       int        | 매물 목록 크기 |    -     |
-| favorites  | Array\<Favorite> |   매물 목록    |    -     |
+|    Key     |     Type     |  Description   | Nullable |
+| :--------: | :----------: | :------------: | :------: |
+|  page_max  |     int      | 총 페이지 개수 |    -     |
+| fav_length |     int      | 매물 목록 크기 |    -     |
+| fav_rooms  | Array\<Room> |   매물 목록    |    -     |
 
-| Favorite Field | Type  |   Description    | Nullable |
-| :------------: | :---: | :--------------: | :------: |
-|    user_id     | long  | 사용자 고유 번호 |    -     |
-|    room_id     |  int  |  매물 고유 번호  |    -     |
-|   timestamp    | long  |    등록 시점     |    -     |
+| Room Field |     Type      |                     Description                     | Nullable |
+| :--------: | :-----------: | :-------------------------------------------------: | :------: |
+|     id     |      int      |                   매물 고유 번호                    |    -     |
+|   title    |    String     |          매물 제목</br>[30자 이내 텍스트]           |    -     |
+| trans_type |      int      |     거래 종류</br>[1: 월세 / 2: 전세 / 3: 년세]     |    -     |
+|  deposit   |      int      |      보증금</br>[거래 종류에 따라 0혹은 NULL]       |    O     |
+|    fee     |      int      |       월세</br>[거래 종류에 따라 0혹은 NULL]        |    O     |
+|   floor    |      int      | 매물 층</br>[N~-1: 지하 / 0: 정보 없음 / 1~N: 지상] |    O     |
+| const_type |      int      |            건물 구조</br>[1~N / 방 개수]            |    O     |
+|  address   |    String     |            매물 주소지</br>[도로명 주소]            |    -     |
+|   images   | Array\<Image> |                  매물 이미지 목록                   |    -     |
+| timestamp  |     long      |           게시 시간</br>[Unix Timestamp]            |    -     |
+| trans_done |    boolean    | 매물 거래 완료 여부</br>[0: 거래 중 / 1: 거래 완료] |    -     |
+| fav_count  |      int      |               관심 매물로 지정된 횟수               |    -     |
+
+
+| Image Field |  Type  |        Description        | Nullable |
+| :---------: | :----: | :-----------------------: | :------: |
+|     id      |  int   |     이미지 고유 번호      |    -     |
+|   user_id   |  long  | 업로드한 사용자 고유 번호 |    -     |
+|    path     | String |        이미지 경로        |    -     |
+|  timestamp  |  long  |        업로드 시간        |    -     |
 
 </br>
 
@@ -301,24 +365,7 @@
 
 </br>
 
-## 평판 등록/갱신
-### GET /api/
-`(예시) /api/`
-</br>
-
-### 요청
-|  Key  | Type  | Description  | Required |
-| :---: | :---: | :----------: | :------: |
-| page  |  int  | page of list |    -     |
-
-### 응답
-|  Key  | Type  | Description  | Required |
-| :---: | :---: | :----------: | :------: |
-| page  |  int  | page of list |    -     |
-
-</br>
-
-## 계정 정보 조회
+## 사용자 정보 조회
 ### GET /api/user/{user_id}
 `(예시) /api/user/1234234155`
 </br>
@@ -328,7 +375,45 @@
 | :-----: | :---: | :---------------------: | :------: |
 | user_id | long  | 카카오 사용자 고유 번호 |    O     |
 
-### 응답
+### 응답 (OK 200)
+|     Key     | Type  |             Description             | Nullable |
+| :---------: | :---: | :---------------------------------: | :------: |
+|     id      | long  |          사용자 고유 번호           |    -     |
+|   room_id   |  int  |           사용자 방 번호            |    O     |
+| rate_manner |  int  | 사용자 매너 점수</br>[1~10: 별 5개] |    O     |
+|  rate_room  |  int  |  매물 관련 점수</br>[1~10: 별 5개]  |    O     |
+| rate_count  |  int  |             총 평가 수              |    O     |
+
+</br>
+
+## 사용자 평가 등록
+### GET /api/
+`(예시) /api/`
+</br>
+
+### 요청
+|  Key  | Type  | Description  | Required |
+| :---: | :---: | :----------: | :------: |
+| page  |  int  | page of list |    -     |
+
+### 응답 (OK 200)
+|  Key  | Type  | Description  | Required |
+| :---: | :---: | :----------: | :------: |
+| page  |  int  | page of list |    -     |
+
+</br>
+
+## 사용자 평가 갱신
+### GET /api/
+`(예시) /api/`
+</br>
+
+### 요청
+|  Key  | Type  | Description  | Required |
+| :---: | :---: | :----------: | :------: |
+| page  |  int  | page of list |    -     |
+
+### 응답 (OK 200)
 |  Key  | Type  | Description  | Required |
 | :---: | :---: | :----------: | :------: |
 | page  |  int  | page of list |    -     |
@@ -352,5 +437,36 @@
 
 </br>
 
+## 매물 이미지 목록 조회 ✔
+### GET /api/image/{room_id}
+`(예시) /api/image/3`
+```
+[
+    {
+        "id": 5,
+        "user_id": 23487632487314,
+        "path": "/image12312312.jpg",
+        "timestamp": 1619099148
+    },
+    {
+        "id": 6,
+        "user_id": 23487632487314,
+        "path": "/213123123123.jpg",
+        "timestamp": 1619099181
+    }
+]
+```
+</br>
 
-채팅창
+### 요청
+|  Path   | Type  |  Description   | Required |
+| :-----: | :---: | :------------: | :------: |
+| room_id |  int  | 매물 고유 번호 |    O     |
+
+### 응답 (OK 200)
+|    Key    |  Type  |        Description        | Nullable |
+| :-------: | :----: | :-----------------------: | :------: |
+|    id     |  int   |     이미지 고유 번호      |    -     |
+|  user_id  |  long  | 업로드한 사용자 고유 번호 |    -     |
+|   path    | String |        이미지 경로        |    -     |
+| timestamp |  long  |        업로드 시간        |    -     |

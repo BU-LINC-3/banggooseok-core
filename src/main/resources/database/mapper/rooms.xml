@@ -3,11 +3,25 @@
 <mapper namespace="rooms">
     <!-- Query Room List -->
     <select id="selectRoomList" parameterType="Integer" resultType="RoomsSimpleVO">
-        SELECT id, title, trans_type, deposit, fee, const_type, floor, address, images, timestamp, trans_done,
+        SELECT id,
+               title,
+               trans_type,
+               deposit,
+               fee,
+               const_type,
+               floor,
+               address,
+               trans_done,
+               UNIX_TIMESTAMP(timestamp) AS timestamp,
+               (
+                   SELECT JSON_ARRAYAGG(JSON_OBJECT("id", id, "user_id", user_id, "path", path, "timestamp", UNIX_TIMESTAMP(timestamp)))
+                   FROM images
+                   WHERE images.room_id = rooms.id
+               ) AS images,
                (
                    SELECT COUNT(room_id)
                    FROM favorites
-                   WHERE  room_id = id
+                   WHERE favorites.room_id = rooms.id
                ) AS fav_count
         FROM rooms
         LIMIT #{from}, #{count}
@@ -19,15 +33,41 @@
         FROM rooms
     </select>
 
-    <!-- Query Room Detailed List -->
+    <!-- Query Room List -->
     <select id="selectRoom" parameterType="Integer" resultType="RoomsVO">
-        SELECT *,
-                (
-                    SELECT COUNT(room_id)
-                    FROM favorites
-                    WHERE room_id = id
-
-                ) AS fav_count
+        SELECT id,
+               user_id,
+               title,
+               description,
+               trans_type,
+               fee,
+               manage_fee,
+               manage_tags,
+               deposit,
+               floor,
+               const_floor,
+               const_type,
+               valid_dimen,
+               supply_dimen,
+               options,
+               elevator,
+               parking,
+               temp_sys,
+               address,
+               contact,
+               trans_done,
+               UNIX_TIMESTAMP(avail_date) AS avail_date,
+               UNIX_TIMESTAMP(timestamp) AS timestamp,
+               (
+                   SELECT JSON_ARRAYAGG(JSON_OBJECT("id", id, "user_id", user_id, "path", path, "timestamp", UNIX_TIMESTAMP(timestamp)))
+                   FROM images
+                   WHERE images.room_id = rooms.id
+               ) AS images,
+               (
+                   SELECT COUNT(room_id)
+                   FROM favorites
+                   WHERE favorites.room_id = rooms.id
+               ) AS fav_count
         FROM rooms
         WHERE id = #{room_id}
     </select>
@@ -40,21 +80,6 @@
         VALUES (#{user_id}, #{title}, #{description}, #{trans_type}, #{fee}, #{manage_fee}, #{manage_tags}, #{deposit},
                 #{floor}, #{const_floor}, #{const_type}, #{valid_dimen}, #{supply_dimen}, #{avail_date}, #{options},
                 #{elevator}, #{parking}, #{temp_sys}, #{address}, #{contact})
-    </insert>
-
-    <!-- Query FavRoom List -->
-   <select id="selectFavList" parameterType="Integer" resultType="FavRoomsVO">
-        SELECT id, title, description, fee, deposit, trans_type,images
-        FROM rooms
-        WHERE id IN (SELECT room_id
-                            FROM favorites
-                            WHERE favorites.user_id = #{user_id})
-    </select>
-
-    <!-- Query FavRoom Add -->
-    <insert id="insertFavroomAdd">
-        INSERT INTO favorites(user_id, room_id)
-        VALUES (#{user_id}, #{room_id})
     </insert>
 
 </mapper>

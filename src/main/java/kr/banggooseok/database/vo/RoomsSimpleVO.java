@@ -1,11 +1,10 @@
 package kr.banggooseok.database.vo;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 
 public class RoomsSimpleVO {
 
@@ -34,7 +33,7 @@ public class RoomsSimpleVO {
     private String address;
 
     @SerializedName("images")
-    private List<String> images;
+    private List<ImagesVO> images;
 
     @SerializedName("timestamp")
     private long timestamp;
@@ -109,27 +108,20 @@ public class RoomsSimpleVO {
         this.address = address;
     }
 
-    public List<String> getImages() {
+    public List<ImagesVO> getImages() {
         return images;
     }
 
     public void setImages(String images) {
-        List<String> imageList = new ArrayList<>();
-        StringTokenizer stringTokenizer = new StringTokenizer(images, ";");
-
-        while (stringTokenizer.hasMoreTokens()) {
-            imageList.add(stringTokenizer.nextToken());
-        }
-
-        this.images = imageList;
+        this.images = new Gson().fromJson(images, new TypeToken<List<ImagesVO>>(){}.getType());
     }
 
     public long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp.toInstant().toEpochMilli();
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 
     public boolean isTrans_done() {
