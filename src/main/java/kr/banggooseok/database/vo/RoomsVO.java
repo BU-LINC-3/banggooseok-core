@@ -3,6 +3,7 @@ package kr.banggooseok.database.vo;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -71,7 +72,6 @@ public class RoomsVO extends RoomsSimpleVO {
         this.manage_fee = manage_fee;
     }
 
-    // TODO: DB INSERT 처리
     public List<String> getManage_tags() {
         return manage_tags;
     }
@@ -119,7 +119,6 @@ public class RoomsVO extends RoomsSimpleVO {
         this.avail_date = avail_date;
     }
 
-    // TODO: DB INSERT 처리
     public List<String> getOptions() {
         return options;
     }
@@ -166,4 +165,19 @@ public class RoomsVO extends RoomsSimpleVO {
     public void setContact(String contact) {
         this.contact = contact;
     }
+
+    public String stringify(List<String> listObject) {
+        Iterator<String> iterator = listObject.iterator();
+        String stringTags = "";
+
+        while (iterator.hasNext()) {
+            stringTags = stringTags.concat(iterator.next());
+            if (iterator.hasNext()) {
+                stringTags = stringTags.concat(";");
+            }
+        }
+
+        return stringTags;
+    }
+
 }

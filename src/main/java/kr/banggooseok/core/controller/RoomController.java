@@ -26,7 +26,7 @@ public class RoomController {
         return roomsRepository.getRoom(room_id);
     }
 
-    // TODO: TOKEN 처리
+    // TODO: TOKEN 처리랑 DB INSERT 시 문자 인코딩 깨지는 문제 해결
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
     public HashMap<String, Object> postRoom(@RequestBody RoomsVO room,
                                             @RequestParam String token,

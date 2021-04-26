@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public class RoomsSimpleVO {
@@ -140,4 +141,7 @@ public class RoomsSimpleVO {
         this.fav_count = fav_count;
     }
 
+    public Timestamp longToTimestamp(long time) {
+        return new Timestamp(time);
+    }
 }

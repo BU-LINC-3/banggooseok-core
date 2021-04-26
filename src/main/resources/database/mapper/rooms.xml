@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="rooms">
     <!-- Query Room List -->
-    <select id="selectRoomList" parameterType="Integer" resultType="RoomsSimpleVO">
+    <select id="selectRoomList" parameterType="map" resultType="RoomsSimpleVO">
         SELECT id,
                title,
                trans_type,
@@ -34,7 +34,7 @@
     </select>
 
     <!-- Query Room List -->
-    <select id="selectRoom" parameterType="Integer" resultType="RoomsVO">
+    <select id="selectRoom" parameterType="map" resultType="RoomsVO">
         SELECT id,
                user_id,
                title,
@@ -73,7 +73,7 @@
     </select>
 
     <!-- Insert Room -->
-    <insert  id="insertRoom" parameterMap="RoomsVO" useGeneratedKeys="true" keyProperty="id">
+    <insert  id="insertRoom" parameterType="map" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO rooms(user_id, title, description, trans_type, fee, manage_fee, manage_tags, deposit,
                           floor, const_floor, const_type, valid_dimen, supply_dimen, avail_date, options,
                           elevator, parking, temp_sys, address, contact)
