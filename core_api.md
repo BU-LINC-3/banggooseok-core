@@ -510,3 +510,39 @@ curl -v -X POST "{BASE_URL}/api/room/submit?token={TOKEN}&user_id={ID}" \
 |  user_id  |  long  | 업로드한 사용자 고유 번호 |    -     |
 |   path    | String |        이미지 경로        |    -     |
 | timestamp |  long  |        업로드 시간        |    -     |
+
+</br>
+
+## 매물 이미지 등록 (작성 중)
+### GET /api/image/{room_id}/submit
+`(예시) /api/image/3`
+```
+[
+    {
+        "id": 5,
+        "user_id": 23487632487314,
+        "path": "/image12312312.jpg",
+        "timestamp": 1619099148
+    },
+    {
+        "id": 6,
+        "user_id": 23487632487314,
+        "path": "/213123123123.jpg",
+        "timestamp": 1619099181
+    }
+]
+```
+</br>
+
+### 요청
+|  Path   | Type  |  Description   | Required |
+| :-----: | :---: | :------------: | :------: |
+| room_id |  int  | 매물 고유 번호 |    O     |
+
+### 응답 (OK 200)
+|    Key    |  Type  |        Description        | Nullable |
+| :-------: | :----: | :-----------------------: | :------: |
+|    id     |  int   |     이미지 고유 번호      |    -     |
+|  user_id  |  long  | 업로드한 사용자 고유 번호 |    -     |
+|   path    | String |        이미지 경로        |    -     |
+| timestamp |  long  |        업로드 시간        |    -     |
