@@ -1,5 +1,6 @@
 package kr.banggooseok.core.controller;
 
+import kr.banggooseok.core.repository.kakao.KakaoAPIRepository;
 import kr.banggooseok.database.repository.RoomsRepository;
 import kr.banggooseok.database.vo.RoomsVO;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,8 @@ import java.util.HashMap;
 @RestController
 @RequestMapping(value = "/api/room")
 public class RoomController {
+
+    private final KakaoAPIRepository kakaoAPI = new KakaoAPIRepository();
 
     @Resource(name = "roomsRepository")
     private RoomsRepository roomsRepository;
@@ -26,11 +29,15 @@ public class RoomController {
         return roomsRepository.getRoom(room_id);
     }
 
-    // TODO: TOKEN 처리, DB INSERT 시 문자 인코딩 깨지는 문제 해결, 정보 유효한지 검사
+    // TODO: 정보 유효한지 검사
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
     public HashMap<String, Object> postRoom(@RequestBody RoomsVO room,
                                             @RequestParam String token,
-                                            @RequestParam long user_id) {
+                                            @RequestParam long user_id) throws Exception {
+
+        if (!kakaoAPI.validateToken(token, user_id)) {
+            throw new Exception("Kakao API Token is not valid");
+        }
         room.setUser_id(user_id);
 
         return roomsRepository.postRoom(room);

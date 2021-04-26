@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -81,6 +82,8 @@ public class RoomsDAO {
         parameters.put("address", room.getAddress());
         parameters.put("contact", room.getContact());
 
-        return session.insert("rooms.insertRoom", parameters);
+        session.insert("rooms.insertRoom", parameters);
+
+        return ((BigInteger) parameters.get("id")).intValue();
     }
 }
