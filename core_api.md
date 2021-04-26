@@ -237,11 +237,13 @@
 
 </br>
 
-## 매물 등록
+## 매물 등록 ✅
 ### POST /api/room/submit
 `(예시) /api/room/submit?token=a9ace025c90c0da2161075da6ddd3492a2fca776&user_id=12345345463462`
 ```
-
+{
+    "room_id":13
+}
 ```
 </br>
 
