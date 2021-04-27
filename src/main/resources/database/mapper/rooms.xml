@@ -81,7 +81,8 @@
                 #{floor}, #{const_floor}, #{const_type}, #{valid_dimen}, #{supply_dimen}, #{avail_date}, #{options},
                 #{elevator}, #{parking}, #{temp_sys}, #{address}, #{contact})
     </insert>
-    <!-- Query Room List -->
+
+    <!-- Query FavRoom List -->
     <select id="selectFavRoomlist" parameterType="map" resultType="FavroomsVO">
         SELECT id, user_id, title, trans_type, deposit, fee, floor, const_type, address, images, trans_done, UNIX_TIMESTAMP(timestamp) AS timestamp,
                (
@@ -100,4 +101,16 @@
                      WHERE favorites.user_id = #{user_id})
 
     </select>
+
+    <!-- Insert FavRoom -->
+    <insert id="insertFavRoom" parameterType="map" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        INSERT INTO favorites(user_id, room_id)
+        VALUES (#{user_id}, #{room_id})
+    </insert>
+
+    <!-- Delete FavRoom -->
+    <delete id="deleteFavroom" parameterType="map">
+        DELETE FROM favorites
+        WHERE user_id = #{user_id} AND room_id = #{room_id}
+    </delete>
 </mapper>
