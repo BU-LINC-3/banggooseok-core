@@ -82,4 +82,24 @@
                 #{elevator}, #{parking}, #{temp_sys}, #{address}, #{contact})
     </insert>
 
+    <!-- Query FavRoom List -->
+    <select id="selectFavRoomlist" parameterType="map" resultType="FavroomsVO">
+        SELECT id, user_id, title, trans_type, deposit, fee, floor, const_type, address, images, trans_done, UNIX_TIMESTAMP(timestamp) AS timestamp,
+               (
+                   SELECT JSON_ARRAYAGG(JSON_OBJECT("id", id, "user_id", user_id, "path", path, "timestamp", UNIX_TIMESTAMP(timestamp)))
+                   FROM images
+                   WHERE images.room_id = rooms.id
+               ) AS images,
+               (
+                   SELECT COUNT(room_id)
+                   FROM favorites
+                   WHERE favorites.room_id = rooms.id
+               ) AS fav_count
+        FROM rooms
+        WHERE id IN (SELECT room_id
+                     FROM favorites
+                     WHERE favorites.user_id = #{user_id})
+
+    </select>
+
 </mapper>
