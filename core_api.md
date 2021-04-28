@@ -12,31 +12,31 @@
     - [POST /api/room/submit](#post-apiroomsubmit)
     - [요청](#요청-2)
     - [응답 (OK 200)](#응답-ok-200-2)
-  - [관심 매물 조회](#관심-매물-조회)
+  - [관심 매물 조회 🔴](#관심-매물-조회-)
     - [GET /api/user/{user_id}/favorite/list/{page}](#get-apiuseruser_idfavoritelistpage)
     - [요청](#요청-3)
     - [응답](#응답)
-  - [관심 매물 등록](#관심-매물-등록)
+  - [관심 매물 등록 🔴](#관심-매물-등록-)
     - [GET /api/user/{user_id}/favorite/{room_id}/add](#get-apiuseruser_idfavoriteroom_idadd)
     - [요청](#요청-4)
     - [응답 (OK 200)](#응답-ok-200-3)
-  - [관심 매물 삭제](#관심-매물-삭제)
+  - [관심 매물 삭제 🔴](#관심-매물-삭제-)
     - [GET /api/user/{user_id}/favorite/{room_id}/delete](#get-apiuseruser_idfavoriteroom_iddelete)
     - [요청](#요청-5)
     - [응답 (OK 200)](#응답-ok-200-4)
-  - [사용자 정보 조회](#사용자-정보-조회)
+  - [사용자 정보 조회 🔴](#사용자-정보-조회-)
     - [GET /api/user/{user_id}](#get-apiuseruser_id)
     - [요청](#요청-6)
     - [응답 (OK 200)](#응답-ok-200-5)
-  - [사용자 평가 등록](#사용자-평가-등록)
+  - [사용자 평가 등록 🔴](#사용자-평가-등록-)
     - [GET /api/](#get-api)
     - [요청](#요청-7)
     - [응답 (OK 200)](#응답-ok-200-6)
-  - [사용자 평가 갱신](#사용자-평가-갱신)
+  - [사용자 평가 갱신 🔴](#사용자-평가-갱신-)
     - [GET /api/](#get-api-1)
     - [요청](#요청-8)
     - [응답 (OK 200)](#응답-ok-200-7)
-  - [거래 내역 조회](#거래-내역-조회)
+  - [거래 내역 조회 🔴](#거래-내역-조회-)
     - [GET /api/user/{user_id}/transaction/list](#get-apiuseruser_idtransactionlist)
     - [요청](#요청-9)
     - [응답](#응답-1)
@@ -44,9 +44,10 @@
     - [GET /api/image/{room_id}](#get-apiimageroom_id)
     - [요청](#요청-10)
     - [응답 (OK 200)](#응답-ok-200-8)
-  - [매물 이미지 등록 (작성 중)](#매물-이미지-등록-작성-중)
+  - [매물 이미지 등록 ✅](#매물-이미지-등록-)
     - [GET /api/image/{room_id}/submit](#get-apiimageroom_idsubmit)
     - [요청](#요청-11)
+    - [요청](#요청-12)
     - [응답 (OK 200)](#응답-ok-200-9)
 
 <br/>
@@ -369,7 +370,7 @@ curl -v -X POST "{BASE_URL}/api/room/submit?token={TOKEN}&user_id={ID}" \
 
 <br/>
 
-## 관심 매물 조회
+## 관심 매물 조회 🔴
 ### GET /api/user/{user_id}/favorite/list/{page}
 `(예시) /api/user/123412342434/favorite/list/0`
 <br/>
@@ -412,7 +413,7 @@ curl -v -X POST "{BASE_URL}/api/room/submit?token={TOKEN}&user_id={ID}" \
 
 <br/>
 
-## 관심 매물 등록
+## 관심 매물 등록 🔴
 ### GET /api/user/{user_id}/favorite/{room_id}/add
 `(예시) /api/user/12332452435/favorite/12345/add?token=a9ace025c90c0da2161075da6ddd3492a2fca776`
 <br/>
@@ -434,7 +435,7 @@ curl -v -X POST "{BASE_URL}/api/room/submit?token={TOKEN}&user_id={ID}" \
 
 <br/>
 
-## 관심 매물 삭제
+## 관심 매물 삭제 🔴
 ### GET /api/user/{user_id}/favorite/{room_id}/delete
 `(예시) /api/user/12332452435/favorite/12345/add?token=a9ace025c90c0da2161075da6ddd3492a2fca776`
 <br/>
@@ -456,7 +457,7 @@ curl -v -X POST "{BASE_URL}/api/room/submit?token={TOKEN}&user_id={ID}" \
 
 <br/>
 
-## 사용자 정보 조회
+## 사용자 정보 조회 🔴
 ### GET /api/user/{user_id}
 `(예시) /api/user/1234234155`
 <br/>
@@ -477,7 +478,7 @@ curl -v -X POST "{BASE_URL}/api/room/submit?token={TOKEN}&user_id={ID}" \
 
 <br/>
 
-## 사용자 평가 등록
+## 사용자 평가 등록 🔴
 ### GET /api/
 `(예시) /api/`
 <br/>
@@ -494,7 +495,7 @@ curl -v -X POST "{BASE_URL}/api/room/submit?token={TOKEN}&user_id={ID}" \
 
 <br/>
 
-## 사용자 평가 갱신
+## 사용자 평가 갱신 🔴
 ### GET /api/
 `(예시) /api/`
 <br/>
@@ -511,7 +512,7 @@ curl -v -X POST "{BASE_URL}/api/room/submit?token={TOKEN}&user_id={ID}" \
 
 <br/>
 
-## 거래 내역 조회
+## 거래 내역 조회 🔴
 ### GET /api/user/{user_id}/transaction/list
 `(예시) /api/user/1234532455/transaction/list`
 <br/>
@@ -564,24 +565,22 @@ curl -v -X POST "{BASE_URL}/api/room/submit?token={TOKEN}&user_id={ID}" \
 
 <br/>
 
-## 매물 이미지 등록 (작성 중)
+## 매물 이미지 등록 ✅
 ### GET /api/image/{room_id}/submit
-`(예시) /api/image/3`
+`(예시) /api/image/3/submit?token=jj1o23j3o123j3j&user_id=41324151523`
 ```
-[
-    {
-        "id": 5,
-        "user_id": 23487632487314,
-        "path": "/image12312312.jpg",
-        "timestamp": 1619099148
-    },
-    {
-        "id": 6,
-        "user_id": 23487632487314,
-        "path": "/213123123123.jpg",
-        "timestamp": 1619099181
-    }
-]
+{
+    "id":29,
+    "user_id":324235345346,
+    "path":"/710afb24-afa6-4ee1-8bfe-66a11dc2bf2e.png",
+    "timestamp":1619605067
+}
+```
+<br/>
+
+### 요청
+```
+curl -v -X POST "{BASE_URL}/api/image/1/submit?token={token}&user_id={user_id}" -F "file=@{FILE_PATH}"
 ```
 <br/>
 
@@ -590,10 +589,19 @@ curl -v -X POST "{BASE_URL}/api/room/submit?token={TOKEN}&user_id={ID}" \
 | :-----: | :---: | :------------: | :------: |
 | room_id |  int  | 매물 고유 번호 |    O     |
 
+|  Query  |  Type  |       Description       | Required |
+| :-----: | :----: | :---------------------: | :------: |
+|  token  | String |     카카오 API 토근     |    O     |
+| user_id |  long  | 카카오 사용자 고유 번호 |    O     |
+
+| POST  |        Type         |                 Description                  | Required |
+| :---: | :-----------------: | :------------------------------------------: | :------: |
+| file  | multipart/form-data | 이미지 파일<br/>[PNG, JPG, JPEG / 20MB 이하] |    O     |
+
 ### 응답 (OK 200)
-|    Key    |  Type  |        Description        | Nullable |
-| :-------: | :----: | :-----------------------: | :------: |
-|    id     |  int   |     이미지 고유 번호      |    -     |
-|  user_id  |  long  | 업로드한 사용자 고유 번호 |    -     |
-|   path    | String |        이미지 경로        |    -     |
-| timestamp |  long  |        업로드 시간        |    -     |
+|    Key    |  Type  |                 Description                 | Nullable |
+| :-------: | :----: | :-----------------------------------------: | :------: |
+|    id     |  int   |              이미지 고유 번호               |    -     |
+|  user_id  |  long  |          업로드한 사용자 고유 번호          |    -     |
+|   path    | String | 이미지 경로<br/>["{BASE_URL}/image/{path}"] |    -     |
+| timestamp |  long  |                 업로드 시간                 |    -     |
