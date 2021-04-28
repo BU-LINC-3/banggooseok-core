@@ -46,9 +46,9 @@ public class ImageController {
                               @RequestParam long user_id,
                               @RequestParam MultipartFile file) throws Exception {
 
-//        if (!kakaoAPIRepository.validateToken(token, user_id)) {
-//            throw new Exception("Kakao API Token is not valid");
-//        }
+        if (!kakaoAPIRepository.validateToken(token, user_id)) {
+            throw new Exception("Kakao API Token is not valid");
+        }
 
         String originalFilename = StringUtils.cleanPath(file.getOriginalFilename());
         String destFilename = UUID.randomUUID().toString();
