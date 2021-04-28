@@ -582,9 +582,7 @@ curl -v -X POST "{BASE_URL}/api/room/submit?token={TOKEN}&user_id={ID}" \
 ```
 curl -v -X POST "{BASE_URL}/api/image/1/submit?token={token}&user_id={user_id}" -F "file=@{FILE_PATH}"
 ```
-<br/>
 
-### 요청
 |  Path   | Type  |  Description   | Required |
 | :-----: | :---: | :------------: | :------: |
 | room_id |  int  | 매물 고유 번호 |    O     |
