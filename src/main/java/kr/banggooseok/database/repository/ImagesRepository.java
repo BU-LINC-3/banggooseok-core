@@ -18,4 +18,15 @@ public class ImagesRepository {
         return imagesDAO.selectImageList(roomId);
     }
 
+    public ImagesVO getImage(int id) {
+
+        return imagesDAO.selectImage(id);
+    }
+
+    public ImagesVO postImage(int roomId, long userId, String path) {
+        int id = imagesDAO.insertImage(roomId, userId, path);
+
+        return getImage(id);
+    }
+
 }
