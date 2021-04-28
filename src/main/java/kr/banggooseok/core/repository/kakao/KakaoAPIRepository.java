@@ -1,6 +1,7 @@
 package kr.banggooseok.core.repository.kakao;
 
 import kr.banggooseok.core.model.kakao.TokenInfoModel;
+import org.springframework.stereotype.Repository;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -8,6 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.io.IOException;
 
+@Repository("kakaoAPIRepository")
 public class KakaoAPIRepository {
 
     private Retrofit retrofit;

@@ -12,7 +12,8 @@ import java.util.HashMap;
 @RequestMapping(value = "/api/room")
 public class RoomController {
 
-    private final KakaoAPIRepository kakaoAPI = new KakaoAPIRepository();
+    @Resource(name = "kakaoAPIRepository")
+    private KakaoAPIRepository kakaoAPIRepository;
 
     @Resource(name = "roomsRepository")
     private RoomsRepository roomsRepository;
@@ -35,7 +36,7 @@ public class RoomController {
                                             @RequestParam String token,
                                             @RequestParam long user_id) throws Exception {
 
-        if (!kakaoAPI.validateToken(token, user_id)) {
+        if (!kakaoAPIRepository.validateToken(token, user_id)) {
             throw new Exception("Kakao API Token is not valid");
         }
         room.setUser_id(user_id);
