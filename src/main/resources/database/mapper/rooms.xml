@@ -113,4 +113,19 @@
         DELETE FROM favorites
         WHERE user_id = #{user_id} AND room_id = #{room_id}
     </delete>
+
+    <!-- Select User List -->
+    <select id="selectUserlist" parameterType="int" resultType="UserVO">
+        SELECT users.id, rated_user_id, rate_manner, rate_room,
+               (SELECT COUNT(rate_manner)
+                   FROM rates
+                   WHERE rated_user_id = #{user_id}
+               ) AS rate_count
+        FROM users, rates
+        WHERE users.id = rates.rated_user_id
+    </select>
+
+    <!-- Insert User rate -->
+
+
 </mapper>
