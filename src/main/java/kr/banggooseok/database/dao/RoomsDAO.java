@@ -60,27 +60,27 @@ public class RoomsDAO {
      */
     public int insertRoom(RoomsVO room) {
         Map<String, Object> parameters = new HashMap<>();
-
-        parameters.put("user_id", room.getUser_id());
-        parameters.put("title", room.getTitle());
-        parameters.put("description", room.getDescription());
-        parameters.put("trans_type", room.getTrans_type());
-        parameters.put("deposit", room.getDeposit());
-        parameters.put("fee", room.getFee());
-        parameters.put("manage_fee", room.getManage_fee());
-        parameters.put("manage_tags", room.stringify(room.getManage_tags()));
-        parameters.put("floor", room.getFloor());
-        parameters.put("const_floor", room.getConst_floor());
-        parameters.put("const_type", room.getConst_type());
-        parameters.put("valid_dimen", room.getValid_dimen());
-        parameters.put("supply_dimen", room.getSupply_dimen());
-        parameters.put("avail_date", room.longToTimestamp(room.getAvail_date()));
-        parameters.put("options", room.stringify(room.getOptions()));
-        parameters.put("elevator", room.isElevator());
-        parameters.put("parking", room.getParking());
-        parameters.put("temp_sys", room.getTemp_sys());
-        parameters.put("address", room.getAddress());
-        parameters.put("contact", room.getContact());
+        // TODO: null 처리 어떻게할 건지
+        parameters.putIfAbsent("user_id", room.getUser_id());
+        parameters.putIfAbsent("title", room.getTitle());
+        parameters.putIfAbsent("description", room.getDescription());
+        parameters.putIfAbsent("trans_type", room.getTrans_type());
+        parameters.putIfAbsent("deposit", room.getDeposit());
+        parameters.putIfAbsent("fee", room.getFee());
+        parameters.putIfAbsent("manage_fee", room.getManage_fee());
+        parameters.putIfAbsent("manage_tags", room.stringify(room.getManage_tags()));
+        parameters.putIfAbsent("floor", room.getFloor());
+        parameters.putIfAbsent("const_floor", room.getConst_floor());
+        parameters.putIfAbsent("const_type", room.getConst_type());
+        parameters.putIfAbsent("valid_dimen", room.getValid_dimen());
+        parameters.putIfAbsent("supply_dimen", room.getSupply_dimen());
+        parameters.putIfAbsent("avail_date", room.longToTimestamp(room.getAvail_date()));
+        parameters.putIfAbsent("options", room.stringify(room.getOptions()));
+        parameters.putIfAbsent("elevator", room.isElevator());
+        parameters.putIfAbsent("parking", room.getParking());
+        parameters.putIfAbsent("temp_sys", room.getTemp_sys());
+        parameters.putIfAbsent("address", room.getAddress());
+        parameters.putIfAbsent("contact", room.getContact());
 
         session.insert("rooms.insertRoom", parameters);
 
