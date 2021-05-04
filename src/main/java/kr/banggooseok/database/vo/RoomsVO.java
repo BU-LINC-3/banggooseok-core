@@ -2,10 +2,7 @@ package kr.banggooseok.database.vo;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class RoomsVO extends RoomsSimpleVO {
 
@@ -167,6 +164,10 @@ public class RoomsVO extends RoomsSimpleVO {
     }
 
     public String stringify(List<String> listObject) {
+        if (Objects.isNull(listObject)) {
+            return null;
+        }
+
         Iterator<String> iterator = listObject.iterator();
         String stringTags = "";
 
