@@ -9,15 +9,15 @@ import com.google.gson.annotations.SerializedName;
 public class V20PresSendRequestRequest {
 
     @SerializedName("comment")
-    String comment;
+    public String comment;
 
     @SerializedName("connection_id")
-    String connectionId;
+    public String connectionId;
 
     @SerializedName("presentation_request")
-    V20PresRequestByFormat presentationRequest;
+    public V20PresRequestByFormat presentationRequest;
 
     @SerializedName("trace")
-    boolean trace;
+    public boolean trace;
 
 }

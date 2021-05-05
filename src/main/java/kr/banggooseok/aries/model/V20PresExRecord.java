@@ -11,51 +11,51 @@ import java.util.Map;
 public class V20PresExRecord {
 
     @SerializedName("auto_present")
-    boolean autoPresent;
+    public boolean autoPresent;
 
     @SerializedName("by_format")
-    Map<String, Object> byFormat;
+    public Map<String, Object> byFormat;
 
     @SerializedName("connection_id")
-    String connectionId;
+    public String connectionId;
 
     @SerializedName("created_at")
-    String createdAt;
+    public String createdAt;
 
     @SerializedName("error_msg")
-    String errorMsg;
+    public String errorMsg;
 
     @SerializedName("initiator")
-    String initiator;
+    public String initiator;
 
     @SerializedName("pres")
-    Map<String, Object> pres;
+    public Map<String, Object> pres;
 
     @SerializedName("pres_ex_id")
-    String presExId;
+    public String presExId;
 
     @SerializedName("pres_proposal")
-    Map<String, Object> presProposal;
+    public Map<String, Object> presProposal;
 
     @SerializedName("pres_request")
-    Map<String, Object> presRequest;
+    public Map<String, Object> presRequest;
 
     @SerializedName("role")
-    String role;
+    public String role;
 
     @SerializedName("state")
-    String state;
+    public String state;
 
     @SerializedName("thread_id")
-    String threadId;
+    public String threadId;
 
     @SerializedName("trace")
-    boolean trace;
+    public boolean trace;
 
     @SerializedName("updated_at")
-    String updatedAt;
+    public String updatedAt;
 
     @SerializedName("verified")
-    String verified;
+    public String verified;
 
 }

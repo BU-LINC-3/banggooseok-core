@@ -7,18 +7,18 @@ import java.util.Map;
 public class IndyProofReqPredSpec {
 
     @SerializedName("name")
-    String name;
+    public String name;
 
     @SerializedName("non_revoked")
-    V20PresRequestByFormat.Indy.NonRevoked nonRevoked;
+    public V20PresRequestByFormat.Indy.NonRevoked nonRevoked;
 
     @SerializedName("p_type")
-    String pType;
+    public String pType;
 
     @SerializedName("p_value")
-    int pValue;
+    public int pValue;
 
     @SerializedName("restrictions")
-    Map<String, Object> restrictions;
+    public Map<String, Object> restrictions;
 
 }

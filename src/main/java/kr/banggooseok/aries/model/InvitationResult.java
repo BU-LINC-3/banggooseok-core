@@ -9,12 +9,12 @@ import com.google.gson.annotations.SerializedName;
 public class InvitationResult {
 
     @SerializedName("connection_id")
-    String connectionId;
+    public String connectionId;
 
     @SerializedName("invitation")
-    ConnectionInvitation invitation;
+    public ConnectionInvitation invitation;
 
     @SerializedName("invitation_url")
-    String invitationUrl;
+    public String invitationUrl;
 
 }

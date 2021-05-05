@@ -7,27 +7,27 @@ import java.util.List;
 public class ConnectionInvitation {
 
     @SerializedName("id")
-    String id;
+    public String id;
 
     @SerializedName("type")
-    String type;
+    public String type;
 
     @SerializedName("did")
-    String did;
+    public String did;
 
     @SerializedName("imageUrl")
-    String imageUrl;
+    public String imageUrl;
 
     @SerializedName("label")
-    String label;
+    public String label;
 
     @SerializedName("recipientKeys")
-    List<String> recipientKeys;
+    public List<String> recipientKeys;
 
     @SerializedName("routingKeys")
-    List<String> routingKeys;
+    public List<String> routingKeys;
 
     @SerializedName("serviceEndpoint")
-    String serviceEndPoint;
+    public String serviceEndPoint;
 
 }

@@ -9,15 +9,15 @@ import com.google.gson.annotations.SerializedName;
 public class CredentialDefinitionSendRequest {
 
     @SerializedName("revocation_registry_size")
-    int revocationRegistrySize;
+    public int revocationRegistrySize;
 
     @SerializedName("schema_id")
-    String schemaId;
+    public String schemaId;
 
     @SerializedName("support_revocation")
-    boolean supportRevocation;
+    public boolean supportRevocation;
 
     @SerializedName("tag")
-    String tag;
+    public String tag;
 
 }

@@ -9,57 +9,57 @@ import com.google.gson.annotations.SerializedName;
 public class V20CredProposalRequestPreviewMand {
 
     @SerializedName("auto_remove")
-    boolean autoRemove;
+    public boolean autoRemove;
 
     @SerializedName("comment")
-    String comment;
+    public String comment;
 
     @SerializedName("connection_id")
-    String connectionId;
+    public String connectionId;
 
     @SerializedName("credential_preview")
-    V20CredPreview credentialPreview;
+    public V20CredPreview credentialPreview;
 
     @SerializedName("filter")
-    Filter filter;
+    public Filter filter;
 
     @SerializedName("trace")
-    boolean trace;
+    public boolean trace;
 
-    static class Filter {
+    public static class Filter {
 
         @SerializedName("dif")
-        DIF dif;
+        public DIF dif;
 
         @SerializedName("indy")
-        Indy indy;
+        public Indy indy;
 
-        static class DIF {
+        public static class DIF {
 
             @SerializedName("some_dif_criterion")
-            String someDIFCriterion;
+            public String someDIFCriterion;
 
         }
 
-        static class Indy {
+        public static class Indy {
 
             @SerializedName("cred_def_id")
-            String credDefId;
+            public String credDefId;
 
             @SerializedName("issuer_did")
-            String issuerDID;
+            public String issuerDID;
 
             @SerializedName("schema_id")
-            String schemaId;
+            public String schemaId;
 
             @SerializedName("schema_issuer_did")
-            String schemaIssuerDID;
+            public String schemaIssuerDID;
 
             @SerializedName("schema_name")
-            String schemaName;
+            public String schemaName;
 
             @SerializedName("schema_version")
-            String schemaVersion;
+            public String schemaVersion;
 
         }
 

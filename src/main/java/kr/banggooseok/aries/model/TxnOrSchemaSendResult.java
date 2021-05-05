@@ -9,9 +9,9 @@ import com.google.gson.annotations.SerializedName;
 public class TxnOrSchemaSendResult {
 
     @SerializedName("sent")
-    SchemaSent sent;
+    public SchemaSent sent;
 
     @SerializedName("txn")
-    Txn txn;
+    public Txn txn;
 
 }

@@ -11,12 +11,12 @@ import java.util.List;
 public class SchemaSendRequest {
 
     @SerializedName("attributes")
-    List<String> attributes;
+    public List<String> attributes;
 
     @SerializedName("schema_name")
-    String schemaName;
+    public String schemaName;
 
     @SerializedName("schema_version")
-    String schemaVersion;
+    public String schemaVersion;
 
 }

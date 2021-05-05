@@ -7,42 +7,42 @@ import java.util.Map;
 public class Txn {
 
     @SerializedName("_id")
-    String _id;
+    public String _id;
 
     @SerializedName("_type")
-    String _type;
+    public String _type;
 
     @SerializedName("connection_id")
-    String connectionId;
+    public String connectionId;
 
     @SerializedName("created_at")
-    String createdAt;
+    public String createdAt;
 
     @SerializedName("formats")
-    Map<String, Object> formats;
+    public Map<String, Object> formats;
 
     @SerializedName("messages_attach")
-    Map<String, Object> messagesAttach;
+    public Map<String, Object> messagesAttach;
 
     @SerializedName("signature_request")
-    Map<String, Object> signatureRequest;
+    public Map<String, Object> signatureRequest;
 
     @SerializedName("signature_response")
-    Map<String, Object> signatureResponse;
+    public Map<String, Object> signatureResponse;
 
     @SerializedName("state")
-    String state;
+    public String state;
 
     @SerializedName("thread_id")
-    String threadId;
+    public String threadId;
 
     @SerializedName("timing")
-    Map<String, Object> timing;
+    public Map<String, Object> timing;
 
     @SerializedName("trace")
-    boolean trace;
+    public boolean trace;
 
     @SerializedName("updated_at")
-    String updatedAt;
+    public String updatedAt;
 
 }

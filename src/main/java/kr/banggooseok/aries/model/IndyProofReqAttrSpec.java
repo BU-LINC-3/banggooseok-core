@@ -8,15 +8,15 @@ import java.util.Map;
 public class IndyProofReqAttrSpec {
 
     @SerializedName("name")
-    String name;
+    public String name;
 
     @SerializedName("names")
-    List<String> names;
+    public List<String> names;
 
     @SerializedName("non_revoked")
-    V20PresRequestByFormat.Indy.NonRevoked nonRevoked;
+    public V20PresRequestByFormat.Indy.NonRevoked nonRevoked;
 
     @SerializedName("restrictions")
-    Map<String, Object> restrictions;
+    public Map<String, Object> restrictions;
 
 }

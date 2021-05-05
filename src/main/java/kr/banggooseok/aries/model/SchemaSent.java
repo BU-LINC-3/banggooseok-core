@@ -7,9 +7,9 @@ import java.util.Map;
 public class SchemaSent {
 
     @SerializedName("schema")
-    Map<String, Object> schema;
+    public Map<String, Object> schema;
 
     @SerializedName("schema_id")
-    String schemaId;
+    public String schemaId;
 
 }

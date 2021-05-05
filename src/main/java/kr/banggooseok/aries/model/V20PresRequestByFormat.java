@@ -5,39 +5,39 @@ import com.google.gson.annotations.SerializedName;
 public class V20PresRequestByFormat {
 
     @SerializedName("dif")
-    DIF dif;
+    public DIF dif;
 
     @SerializedName("indy")
-    Indy indy;
+    public Indy indy;
 
     @SerializedName("trace")
-    boolean trace;
+    public boolean trace;
 
-    static class DIF {
+    public static class DIF {
 
         @SerializedName("some_dif")
-        String someDIF;
+        public String someDIF;
 
     }
 
-    static class Indy {
+    public static class Indy {
 
         @SerializedName("name")
-        String name;
+        public String name;
 
         @SerializedName("non_revoked")
-        NonRevoked nonRevoked;
+        public NonRevoked nonRevoked;
 
         @SerializedName("nonce")
-        String nonce;
+        public String nonce;
 
         @SerializedName("requested_attributes")
-        IndyProofReqAttrSpec requestedAttributes;
+        public IndyProofReqAttrSpec requestedAttributes;
 
         @SerializedName("requested_predicates")
-        IndyProofReqPredSpec requestedPredicates;
+        public IndyProofReqPredSpec requestedPredicates;
 
-        static class NonRevoked {
+        public static class NonRevoked {
 
             @SerializedName("to")
             int to;

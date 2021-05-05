@@ -11,69 +11,69 @@ import java.util.Map;
 public class V20CredExRecord {
 
     @SerializedName("auto_issue")
-    boolean autoIssue;
+    public boolean autoIssue;
 
     @SerializedName("auto_offer")
-    boolean autoOffer;
+    public boolean autoOffer;
 
     @SerializedName("auto_remove")
-    boolean autoRemove;
+    public boolean autoRemove;
 
     @SerializedName("by_format")
-    Map<String, Object> byFormat;
+    public Map<String, Object> byFormat;
 
     @SerializedName("connection_id")
-    String connectionId;
+    public String connectionId;
 
     @SerializedName("created_at")
-    String createdAt;
+    public String createdAt;
 
     @SerializedName("cred_ex_id")
-    String credExId;
+    public String credExId;
 
     @SerializedName("cred_id_stored")
-    String credIdStored;
+    public String credIdStored;
 
     @SerializedName("cred_issue")
-    Map<String, Object> credIssue;
+    public Map<String, Object> credIssue;
 
     @SerializedName("cred_offer")
-    Map<String, Object> credOffer;
+    public Map<String, Object> credOffer;
 
     @SerializedName("cred_preview")
-    Map<String, Object> credPreview;
+    public Map<String, Object> credPreview;
 
     @SerializedName("cred_proposal")
-    Map<String, Object> credProposal;
+    public Map<String, Object> credProposal;
 
     @SerializedName("cred_request")
-    Map<String, Object> credRequest;
+    public Map<String, Object> credRequest;
 
     @SerializedName("cred_request_metadata")
-    Map<String, Object> credRequestMetadata;
+    public Map<String, Object> credRequestMetadata;
 
     @SerializedName("error_msg")
-    String errorMsg;
+    public String errorMsg;
 
     @SerializedName("initiator")
-    String initiator;
+    public String initiator;
 
     @SerializedName("parent_thread_id")
-    String parentThreadId;
+    public String parentThreadId;
 
     @SerializedName("role")
-    String role;
+    public String role;
 
     @SerializedName("state")
-    String state;
+    public String state;
 
     @SerializedName("thread_id")
-    String threadId;
+    public String threadId;
 
     @SerializedName("trace")
-    boolean trace;
+    public boolean trace;
 
     @SerializedName("updated_at")
-    String updatedAt;
+    public String updatedAt;
 
 }

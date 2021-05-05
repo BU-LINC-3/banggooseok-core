@@ -2,12 +2,14 @@ package kr.banggooseok.aries.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class V20CredPreview {
 
     @SerializedName("@type")
-    String type;
+    public String type;
 
     @SerializedName("attributes")
-    V20CredAttrSpec attributes;
+    public List<V20CredAttrSpec> attributes;
 
 }
