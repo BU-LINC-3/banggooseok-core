@@ -1,4 +1,4 @@
-package kr.banggooseok.core.model.kakao;
+package kr.banggooseok.kakao.model;
 
 import com.google.gson.annotations.SerializedName;
 

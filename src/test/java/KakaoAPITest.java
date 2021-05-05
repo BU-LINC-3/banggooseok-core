@@ -1,4 +1,4 @@
-import kr.banggooseok.core.repository.kakao.KakaoAPIRepository;
+import kr.banggooseok.kakao.repository.KakaoAPIRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

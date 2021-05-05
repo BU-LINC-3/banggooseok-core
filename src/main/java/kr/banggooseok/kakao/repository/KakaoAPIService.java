@@ -1,6 +1,6 @@
-package kr.banggooseok.core.repository.kakao;
+package kr.banggooseok.kakao.repository;
 
-import kr.banggooseok.core.model.kakao.TokenInfoModel;
+import kr.banggooseok.kakao.model.TokenInfoModel;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
