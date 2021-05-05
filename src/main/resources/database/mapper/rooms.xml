@@ -23,7 +23,7 @@
                    FROM favorites
                    WHERE favorites.room_id = rooms.id
                ) AS fav_count
-        FROM rooms
+        FROM rooms ORDER BY timestamp DESC 
         LIMIT #{from}, #{count}
     </select>
 
