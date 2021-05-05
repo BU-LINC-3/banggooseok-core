@@ -16,7 +16,7 @@ public class KakaoAPITest {
     public void validateTokenTest() throws IOException {
         KakaoAPIRepository repository = new KakaoAPIRepository();
 
-        System.out.println(repository.validateToken("132gyuwefyhu432hyui", 123456789));
+        System.out.println(repository.validateToken("132gyuwefyhu432hyui"));
     }
 
 }

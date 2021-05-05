@@ -26,7 +26,7 @@ public class KakaoAPIRepository {
         service = retrofit.create(KakaoAPIService.class);
     }
 
-    public boolean validateToken(String token, long userId) throws IOException {
+    public boolean validateToken(String token) throws IOException {
         Call<TokenInfoModel> request = service.validateToken("Bearer ".concat(token));
         Response<TokenInfoModel> response = request.execute();
 
@@ -34,7 +34,7 @@ public class KakaoAPIRepository {
             return false;
         }
 
-        return response.body().getUserId() == userId;
+        return response.body().getAppId() == 570516;
     }
 
     public UserInfoModel getUserInfo(String token) throws IOException {

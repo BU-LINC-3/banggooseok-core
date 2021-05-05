@@ -44,7 +44,7 @@ public class ImageController {
                               @RequestParam long user_id,
                               @RequestParam MultipartFile file) throws Exception {
 
-        if (!kakaoAPIRepository.validateToken(token, user_id)) {
+        if (!kakaoAPIRepository.validateToken(token)) {
             throw new Exception("Kakao API Token is not valid");
         }
 

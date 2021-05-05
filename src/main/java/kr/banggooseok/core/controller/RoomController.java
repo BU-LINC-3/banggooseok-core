@@ -36,7 +36,7 @@ public class RoomController {
                                             @RequestParam String token,
                                             @RequestParam long user_id) throws Exception {
 
-        if (!kakaoAPIRepository.validateToken(token, user_id)) {
+        if (!kakaoAPIRepository.validateToken(token)) {
             throw new Exception("Kakao API Token is not valid");
         }
         room.setUser_id(user_id);
