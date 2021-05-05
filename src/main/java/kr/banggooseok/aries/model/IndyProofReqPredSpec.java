@@ -21,4 +21,14 @@ public class IndyProofReqPredSpec {
     @SerializedName("restrictions")
     public Map<String, Object> restrictions;
 
+    public IndyProofReqPredSpec() {
+    }
+
+    public IndyProofReqPredSpec(String name, V20PresRequestByFormat.Indy.NonRevoked nonRevoked, String pType, int pValue, Map<String, Object> restrictions) {
+        this.name = name;
+        this.nonRevoked = nonRevoked;
+        this.pType = pType;
+        this.pValue = pValue;
+        this.restrictions = restrictions;
+    }
 }

@@ -24,6 +24,17 @@ public class AriesRepository {
         service = retrofit.create(AriesService.class);
     }
 
+    public ConnectionList getConnections(String alias) throws Exception {
+        Call<ConnectionList> request = service.getConnections(alias);
+        Response<ConnectionList> response = request.execute();
+
+        if (response.code() != 200 || response.body() == null) {
+            throw new Exception(response.message());
+        }
+
+        return response.body();
+    }
+
     public InvitationResult createInvitation(String alias, boolean autoAccept) throws Exception {
         Call<InvitationResult> request = service.createInvitation(alias, autoAccept, new HashMap<>());
         Response<InvitationResult> response = request.execute();
@@ -49,6 +60,17 @@ public class AriesRepository {
     public TxnOrCredentialDefinitionSendResult createCredentialDef(String connectionId, CredentialDefinitionSendRequest body) throws Exception {
         Call<TxnOrCredentialDefinitionSendResult> request = service.createCredentialDef(connectionId, body);
         Response<TxnOrCredentialDefinitionSendResult> response = request.execute();
+
+        if (response.code() != 200 || response.body() == null) {
+            throw new Exception(response.message());
+        }
+
+        return response.body();
+    }
+
+    public CredentialDefinitionsCreatedResult getCredentialDefs(String schemaName) throws Exception {
+        Call<CredentialDefinitionsCreatedResult> request = service.getCredentialDefs(schemaName);
+        Response<CredentialDefinitionsCreatedResult> response = request.execute();
 
         if (response.code() != 200 || response.body() == null) {
             throw new Exception(response.message());

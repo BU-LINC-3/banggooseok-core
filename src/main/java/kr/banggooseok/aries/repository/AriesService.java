@@ -8,6 +8,10 @@ import java.util.Map;
 
 public interface AriesService {
 
+    @GET("/connections")
+    Call<ConnectionList> getConnections(
+            @Query("alias") String alias);
+
     @POST("/connections/create-invitation")
     Call<InvitationResult> createInvitation(
             @Query("alias") String alias,
@@ -23,6 +27,10 @@ public interface AriesService {
     Call<TxnOrCredentialDefinitionSendResult> createCredentialDef(
             @Query("conn_id") String connectionId,
             @Body() CredentialDefinitionSendRequest body);
+
+    @GET("/credential-definitions/created")
+    Call<CredentialDefinitionsCreatedResult> getCredentialDefs(
+            @Query("schema_name") String schemaName);
 
     @POST("/issue-credential-2.0/send")
     Call<V20CredExRecord> issueCredential(

@@ -2,6 +2,8 @@ package kr.banggooseok.aries.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Map;
+
 public class V20PresRequestByFormat {
 
     @SerializedName("dif")
@@ -9,9 +11,6 @@ public class V20PresRequestByFormat {
 
     @SerializedName("indy")
     public Indy indy;
-
-    @SerializedName("trace")
-    public boolean trace;
 
     public static class DIF {
 
@@ -32,10 +31,13 @@ public class V20PresRequestByFormat {
         public String nonce;
 
         @SerializedName("requested_attributes")
-        public IndyProofReqAttrSpec requestedAttributes;
+        public Map<String, IndyProofReqAttrSpec> requestedAttributes;
 
         @SerializedName("requested_predicates")
-        public IndyProofReqPredSpec requestedPredicates;
+        public Map<String, IndyProofReqPredSpec> requestedPredicates;
+
+        @SerializedName("version")
+        public String version;
 
         public static class NonRevoked {
 

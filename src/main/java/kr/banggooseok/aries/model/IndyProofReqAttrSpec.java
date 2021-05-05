@@ -17,6 +17,15 @@ public class IndyProofReqAttrSpec {
     public V20PresRequestByFormat.Indy.NonRevoked nonRevoked;
 
     @SerializedName("restrictions")
-    public Map<String, Object> restrictions;
+    public List<Map<String, Object>> restrictions;
 
+    public IndyProofReqAttrSpec() {
+    }
+
+    public IndyProofReqAttrSpec(String name, List<String> names, V20PresRequestByFormat.Indy.NonRevoked nonRevoked, List<Map<String, Object>> restrictions) {
+        this.name = name;
+        this.names = names;
+        this.nonRevoked = nonRevoked;
+        this.restrictions = restrictions;
+    }
 }

@@ -7,10 +7,7 @@ import kr.banggooseok.kakao.repository.KakaoAPIRepository;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping(value = "/api/did/issuer")
@@ -23,29 +20,46 @@ public class IssuerController {
     private AriesRepository ariesRepository;
 
     @RequestMapping(value = "/agent", method = RequestMethod.GET)
-    public Map<String, Object> getAgent() {
+    public Map<String, Object> getAgent(@RequestParam String token) throws Exception {
+
+        // Check KakaoAPI Token is valid
+        if (!kakaoAPIRepository.validateToken(token)) {
+            throw new Exception("Kakao API Token is not valid");
+        }
 
         Map<String, Object> map = new HashMap<>();
 
         map.put("port", 8031);
+        map.put("alias", "holder-".concat(UUID.randomUUID().toString()));
 
         return map;
     }
 
     @RequestMapping(value = "/invitation", method = RequestMethod.GET)
-    public InvitationResult requestInvitation() throws Exception {
+    public ConnectionInvitation requestInvitation(@RequestParam String token,
+                                                  @RequestParam String alias) throws Exception {
+        // Check KakaoAPI Token is valid
+        if (!kakaoAPIRepository.validateToken(token)) {
+            throw new Exception("Kakao API Token is not valid");
+        }
+
         // Create Invitation
-        return ariesRepository.createInvitation("", true);
+        return ariesRepository.createInvitation(alias, true).invitation;
     }
 
     @RequestMapping(value = "/credential", method = RequestMethod.GET)
-    public V20CredExRecord requestCredential(@RequestParam String connectionId,
-                                                  @RequestParam String token) throws Exception {
+    public Map<String, Object> requestCredential(@RequestParam String token,
+                                             @RequestParam String alias) throws Exception {
         UserInfoModel userInfo = kakaoAPIRepository.getUserInfo(token);
 
-        if (userInfo == null) {
+        // Check KakaoAPI Token is valid
+        if (userInfo == null || !kakaoAPIRepository.validateToken(token)) {
             throw new Exception("Kakao API Token is not valid");
         }
+
+        // Get Connections
+        ConnectionList connectionList = ariesRepository.getConnections(alias);
+        ConnRecord connRecord = connectionList.results.get(0);
 
         // Config Schema
         SchemaSendRequest schemaSendRequest = new SchemaSendRequest();
@@ -59,7 +73,7 @@ public class IssuerController {
         schemaSendRequest.attributes.add("timestamp");
 
         // Create Schema
-        TxnOrSchemaSendResult schemaSendResult = ariesRepository.createSchemas(connectionId, schemaSendRequest);
+        TxnOrSchemaSendResult schemaSendResult = ariesRepository.createSchemas(connRecord.connectionId, schemaSendRequest);
 
         // Config Credential definition
         CredentialDefinitionSendRequest creDefSendRequest = new CredentialDefinitionSendRequest();
@@ -68,13 +82,13 @@ public class IssuerController {
         creDefSendRequest.tag = "default";
 
         // Define Credential definition
-        TxnOrCredentialDefinitionSendResult creDefSendResult = ariesRepository.createCredentialDef(connectionId, creDefSendRequest);
+        TxnOrCredentialDefinitionSendResult creDefSendResult = ariesRepository.createCredentialDef(connRecord.connectionId, creDefSendRequest);
 
         // Config Issue Credential
         V20CredProposalRequestPreviewMand crePropRequest = new V20CredProposalRequestPreviewMand();
         crePropRequest.autoRemove = true;
         crePropRequest.comment = "string";
-        crePropRequest.connectionId = connectionId;
+        crePropRequest.connectionId = connRecord.connectionId;
         crePropRequest.credentialPreview = new V20CredPreview();
         crePropRequest.credentialPreview.type = "issue-credential/2.0/credential-preview";
         crePropRequest.credentialPreview.attributes = new ArrayList<>();
@@ -100,6 +114,15 @@ public class IssuerController {
         crePropRequest.filter.indy.schemaVersion = schemaSendRequest.schemaVersion;
         crePropRequest.trace = true;
 
-        return ariesRepository.issueCredential(crePropRequest);
+        // Send credential
+        V20CredExRecord credExRecord = ariesRepository.issueCredential(crePropRequest);
+
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("state", credExRecord.state);
+        map.put("thread_id", credExRecord.threadId);
+        map.put("updated_at", credExRecord.updatedAt);
+
+        return map;
     }
 }
