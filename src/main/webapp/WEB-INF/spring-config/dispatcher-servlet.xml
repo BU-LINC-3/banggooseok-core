@@ -12,8 +12,10 @@
 
     <mvc:annotation-driven/>
 
+    <context:component-scan base-package="kr.banggooseok.aries.repository"/>
     <context:component-scan base-package="kr.banggooseok.core.controller"/>
     <context:component-scan base-package="kr.banggooseok.core.repository"/>
+    <context:component-scan base-package="kr.banggooseok.kakao.repository"/>
     <context:component-scan base-package="kr.banggooseok.database.dao"/>
     <context:component-scan base-package="kr.banggooseok.database.repository"/>
 

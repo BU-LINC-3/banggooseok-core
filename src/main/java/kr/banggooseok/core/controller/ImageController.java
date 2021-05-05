@@ -1,8 +1,8 @@
 package kr.banggooseok.core.controller;
 
-import kr.banggooseok.core.repository.kakao.KakaoAPIRepository;
 import kr.banggooseok.database.repository.ImagesRepository;
 import kr.banggooseok.database.vo.ImagesVO;
+import kr.banggooseok.kakao.repository.KakaoAPIRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.util.StringUtils;
@@ -15,9 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 
 @RestController

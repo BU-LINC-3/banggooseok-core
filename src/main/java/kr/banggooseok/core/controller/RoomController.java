@@ -1,8 +1,8 @@
 package kr.banggooseok.core.controller;
 
-import kr.banggooseok.core.repository.kakao.KakaoAPIRepository;
 import kr.banggooseok.database.repository.RoomsRepository;
 import kr.banggooseok.database.vo.RoomsVO;
+import kr.banggooseok.kakao.repository.KakaoAPIRepository;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
