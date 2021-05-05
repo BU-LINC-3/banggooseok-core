@@ -1,11 +1,15 @@
 package kr.banggooseok.aries.repository;
 
 import kr.banggooseok.aries.model.*;
+import org.springframework.stereotype.Repository;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import java.util.HashMap;
+
+@Repository("ariesRepository")
 public class AriesRepository {
 
     private Retrofit retrofit;
@@ -21,7 +25,7 @@ public class AriesRepository {
     }
 
     public InvitationResult createInvitation(String alias, boolean autoAccept) throws Exception {
-        Call<InvitationResult> request = service.createInvitation(alias, autoAccept, null);
+        Call<InvitationResult> request = service.createInvitation(alias, autoAccept, new HashMap<>());
         Response<InvitationResult> response = request.execute();
 
         if (response.code() != 200 || response.body() == null) {
