@@ -1,6 +1,7 @@
 package kr.banggooseok.aries.repository;
 
 import kr.banggooseok.aries.model.*;
+import okhttp3.OkHttpClient;
 import org.springframework.stereotype.Repository;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -8,6 +9,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 @Repository("ariesRepository")
 public class AriesRepository {
@@ -16,7 +18,11 @@ public class AriesRepository {
     private AriesService service;
 
     public AriesRepository() {
+
         retrofit = new Retrofit.Builder()
+                .client(new OkHttpClient().newBuilder()
+                        .readTimeout(20, TimeUnit.SECONDS)
+                        .build())
                 .baseUrl("http://34.64.218.185:8021")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();

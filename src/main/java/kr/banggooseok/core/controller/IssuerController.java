@@ -4,6 +4,7 @@ import kr.banggooseok.aries.model.*;
 import kr.banggooseok.aries.repository.AriesRepository;
 import kr.banggooseok.kakao.model.UserInfoModel;
 import kr.banggooseok.kakao.repository.KakaoAPIRepository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -48,6 +49,7 @@ public class IssuerController {
     }
 
     @RequestMapping(value = "/credential", method = RequestMethod.GET)
+    @Transactional(timeout = 30)
     public Map<String, Object> requestCredential(@RequestParam String token,
                                              @RequestParam String alias) throws Exception {
         UserInfoModel userInfo = kakaoAPIRepository.getUserInfo(token);
