@@ -1,5 +1,5 @@
-# 방구석 코어 API 문서 (작성 중)
-- [방구석 코어 API 문서 (작성 중)](#방구석-코어-api-문서-작성-중)
+# 방구석 코어 API 문서 [(DID 문서는 여기 참조)](did_api.md)
+- [방구석 코어 API 문서 (DID 문서는 여기 참조)](#방구석-코어-api-문서-did-문서는-여기-참조)
   - [매물 목록 조회 ✅](#매물-목록-조회-)
     - [GET /api/room/list/{page}](#get-apiroomlistpage)
     - [요청](#요청)
@@ -47,7 +47,6 @@
   - [매물 이미지 등록 ✅](#매물-이미지-등록-)
     - [GET /api/image/{room_id}/submit](#get-apiimageroom_idsubmit)
     - [요청](#요청-11)
-    - [요청](#요청-12)
     - [응답 (OK 200)](#응답-ok-200-9)
 
 <br/>
@@ -291,7 +290,7 @@
 
 ## 매물 등록 ✅
 ### POST /api/room/submit
-`(예시) /api/room/submit?token=a9ace025c90c0da2161075da6ddd3492a2fca776&user_id=12345345463462`
+`(예시) /api/room/submit?pres_ex_id=357c5911-be2e-4f6c-8023-28d4909f3f4d&user_id=12345345463462`
 ```
 {
     "room_id":13
@@ -336,10 +335,10 @@ curl -v -X POST "{BASE_URL}/api/room/submit?token={TOKEN}&user_id={ID}" \
 }"
 ```
 
-|  Query  |  Type  |       Description       | Required |
-| :-----: | :----: | :---------------------: | :------: |
-|  token  | String |     카카오 API 토근     |    O     |
-| user_id |  long  | 카카오 사용자 고유 번호 |    O     |
+|   Query    |  Type  |       Description        | Required |
+| :--------: | :----: | :----------------------: | :------: |
+| pres_ex_id | String | Presentation Exchange ID |    O     |
+|  user_id   |  long  | 카카오 사용자 고유 번호  |    O     |
 
 |     POST     |      Type      |                     Description                     | Nullable |
 | :----------: | :------------: | :-------------------------------------------------: | :------: |
@@ -567,7 +566,7 @@ curl -v -X POST "{BASE_URL}/api/room/submit?token={TOKEN}&user_id={ID}" \
 
 ## 매물 이미지 등록 ✅
 ### GET /api/image/{room_id}/submit
-`(예시) /api/image/3/submit?token=jj1o23j3o123j3j&user_id=41324151523`
+`(예시) /api/image/3/submit?pres_ex_id=357c5911-be2e-4f6c-8023-28d4909f3f4d&user_id=41324151523`
 ```
 {
     "id":29,
@@ -587,10 +586,10 @@ curl -v -X POST "{BASE_URL}/api/image/1/submit?token={token}&user_id={user_id}" 
 | :-----: | :---: | :------------: | :------: |
 | room_id |  int  | 매물 고유 번호 |    O     |
 
-|  Query  |  Type  |       Description       | Required |
-| :-----: | :----: | :---------------------: | :------: |
-|  token  | String |     카카오 API 토근     |    O     |
-| user_id |  long  | 카카오 사용자 고유 번호 |    O     |
+|   Query    |  Type  |       Description        | Required |
+| :--------: | :----: | :----------------------: | :------: |
+| pres_ex_id | String | Presentation Exchange ID |    O     |
+|  user_id   |  long  | 카카오 사용자 고유 번호  |    O     |
 
 | POST  |        Type         |                 Description                  | Required |
 | :---: | :-----------------: | :------------------------------------------: | :------: |
