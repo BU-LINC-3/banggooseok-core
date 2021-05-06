@@ -1,5 +1,6 @@
 package kr.banggooseok.core.controller;
 
+import kr.banggooseok.aries.repository.AriesRepository;
 import kr.banggooseok.database.repository.ImagesRepository;
 import kr.banggooseok.database.vo.ImagesVO;
 import kr.banggooseok.kakao.repository.KakaoAPIRepository;
@@ -26,8 +27,8 @@ public class ImageController {
     @Value("${image_path}")
     private String imagePath;
 
-    @Resource(name = "kakaoAPIRepository")
-    private KakaoAPIRepository kakaoAPIRepository;
+    @Resource(name = "ariesRepository")
+    private AriesRepository ariesRepository;
 
     @Resource(name = "imagesRepository")
     private ImagesRepository imagesRepository;
@@ -40,12 +41,12 @@ public class ImageController {
 
     @RequestMapping(value = "/{room_id}/submit", method = RequestMethod.POST)
     public ImagesVO postImage(@PathVariable int room_id,
-                              @RequestParam String token,
+                              @RequestParam String pres_ex_id,
                               @RequestParam long user_id,
                               @RequestParam MultipartFile file) throws Exception {
 
-        if (!kakaoAPIRepository.validateToken(token)) {
-            throw new Exception("Kakao API Token is not valid");
+        if (!ariesRepository.getPresentation(pres_ex_id).verified.equals("true")) {
+            throw new Exception("Proof : false");
         }
 
         String originalFilename = StringUtils.cleanPath(file.getOriginalFilename());

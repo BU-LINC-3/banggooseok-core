@@ -1,5 +1,6 @@
 package kr.banggooseok.core.controller;
 
+import kr.banggooseok.aries.repository.AriesRepository;
 import kr.banggooseok.database.repository.RoomsRepository;
 import kr.banggooseok.database.vo.RoomsVO;
 import kr.banggooseok.kakao.repository.KakaoAPIRepository;
@@ -12,8 +13,8 @@ import java.util.HashMap;
 @RequestMapping(value = "/api/room")
 public class RoomController {
 
-    @Resource(name = "kakaoAPIRepository")
-    private KakaoAPIRepository kakaoAPIRepository;
+    @Resource(name = "ariesRepository")
+    private AriesRepository ariesRepository;
 
     @Resource(name = "roomsRepository")
     private RoomsRepository roomsRepository;
@@ -33,11 +34,11 @@ public class RoomController {
     // TODO: 정보 유효한지 검사
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
     public HashMap<String, Object> postRoom(@RequestBody RoomsVO room,
-                                            @RequestParam String token,
+                                            @RequestParam String pres_ex_id,
                                             @RequestParam long user_id) throws Exception {
 
-        if (!kakaoAPIRepository.validateToken(token)) {
-            throw new Exception("Kakao API Token is not valid");
+        if (!ariesRepository.getPresentation(pres_ex_id).verified.equals("true")) {
+            throw new Exception("Proof : false");
         }
         room.setUser_id(user_id);
 
