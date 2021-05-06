@@ -21,7 +21,7 @@ public class AriesRepository {
 
         retrofit = new Retrofit.Builder()
                 .client(new OkHttpClient().newBuilder()
-                        .readTimeout(20, TimeUnit.SECONDS)
+                        .readTimeout(60, TimeUnit.SECONDS)
                         .build())
                 .baseUrl("http://34.64.218.185:8021")
                 .addConverterFactory(GsonConverterFactory.create())
