@@ -18,7 +18,7 @@ public class VerifierController {
     private AriesRepository ariesRepository;
 
     @RequestMapping(value = "/knock", method = RequestMethod.GET)
-    public V20PresExRecord knock(@RequestParam String alias) throws Exception {
+    public Map<String, Object> knock(@RequestParam String alias) throws Exception {
 
         // Get Connections
         ConnectionList connectionList = ariesRepository.getConnections(alias);
@@ -46,7 +46,15 @@ public class VerifierController {
         presSendReqRequest.presentationRequest.indy.requestedPredicates = new HashMap<>();
 
         // Send proof request
-        return ariesRepository.requestProof(presSendReqRequest);
+        V20PresExRecord presExRecord = ariesRepository.requestProof(presSendReqRequest);
+
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("state", presExRecord.state);
+        map.put("thread_id", presExRecord.threadId);
+        map.put("updated_at", presExRecord.updatedAt);
+
+        return map;
     }
 
     @RequestMapping(value = "/verified", method = RequestMethod.GET)
