@@ -6,8 +6,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 
-import java.util.Map;
-
 public interface KakaoAPIService {
 
     @GET("/v1/user/access_token_info")

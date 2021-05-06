@@ -51,6 +51,7 @@ public class VerifierController {
         Map<String, Object> map = new HashMap<>();
 
         map.put("state", presExRecord.state);
+        map.put("pres_ex_id", presExRecord.presExId);
         map.put("thread_id", presExRecord.threadId);
         map.put("updated_at", presExRecord.updatedAt);
 

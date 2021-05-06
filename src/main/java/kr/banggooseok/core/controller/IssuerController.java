@@ -81,7 +81,7 @@ public class IssuerController {
         CredentialDefinitionSendRequest creDefSendRequest = new CredentialDefinitionSendRequest();
         creDefSendRequest.revocationRegistrySize = 1000;
         creDefSendRequest.schemaId = schemaSendResult.sent.schemaId;
-        creDefSendRequest.tag = "default";
+        creDefSendRequest.tag = "banggooseok";
 
         // Define Credential definition
         TxnOrCredentialDefinitionSendResult creDefSendResult = ariesRepository.createCredentialDef(connRecord.connectionId, creDefSendRequest);
@@ -109,7 +109,8 @@ public class IssuerController {
         crePropRequest.filter.dif.someDIFCriterion = "string";
         crePropRequest.filter.indy = new V20CredProposalRequestPreviewMand.Filter.Indy();
         crePropRequest.filter.indy.credDefId = creDefSendResult.sent.credentialDefinitionId;
-        crePropRequest.filter.indy.issuerDID = creDefSendResult.sent.credentialDefinitionId.split(":")[0];
+        crePropRequest.filter.indy.issuerDID = creDefSendResult.sent.credentialDefinitionId.substring(
+                0, creDefSendResult.sent.credentialDefinitionId.indexOf(":"));
         crePropRequest.filter.indy.schemaId = schemaSendResult.sent.schemaId;
         crePropRequest.filter.indy.schemaIssuerDID = crePropRequest.filter.indy.issuerDID;
         crePropRequest.filter.indy.schemaName = schemaSendRequest.schemaName;
