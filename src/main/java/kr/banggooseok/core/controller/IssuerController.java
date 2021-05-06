@@ -81,7 +81,7 @@ public class IssuerController {
         CredentialDefinitionSendRequest creDefSendRequest = new CredentialDefinitionSendRequest();
         creDefSendRequest.revocationRegistrySize = 1000;
         creDefSendRequest.schemaId = schemaSendResult.sent.schemaId;
-        creDefSendRequest.tag = "banggooseok";
+        creDefSendRequest.tag = alias;
 
         // Define Credential definition
         TxnOrCredentialDefinitionSendResult creDefSendResult = ariesRepository.createCredentialDef(connRecord.connectionId, creDefSendRequest);
