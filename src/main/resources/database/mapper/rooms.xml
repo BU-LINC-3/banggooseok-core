@@ -33,7 +33,7 @@
         FROM rooms
     </select>
 
-    <!-- Query Room List -->
+    <!-- Query Rooms -->
     <select id="selectRoom" parameterType="map" resultType="RoomsVO">
         SELECT id,
                user_id,
