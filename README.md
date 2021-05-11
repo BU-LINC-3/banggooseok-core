@@ -8,6 +8,12 @@ Spring으로 구현한 방구석 REST API 입니다.<br/>
 WAS: Tomcat 9.0.45<br/>
 IDE: IntelliJ IDEA Ultimate 2021.1<br/>
 
+## 방구석 API Sequence Diagram
+<img src="img/diagram1.png"/>
+
+## DID API Sequence Diagram
+<img src="img/diagram2.png"/>
+
 ## Summary
 [Google Slide](https://docs.google.com/presentation/d/1gAaLozPinVzZwGbQTXH28-IPxn0YdgzX82RA1wlZTp4)
 <br/>
